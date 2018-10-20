@@ -4,7 +4,7 @@ using UnityEngine;
 
 //Script rotates upon the Game's origin coordinate
 
-public class Rotatoh : MonoBehaviour {
+public class Rotato : MonoBehaviour {
 
     public int countdown = 10;  //Time in seconds before stage begins to rotate
     public float rampModifier = 1.0f;   //speed increase modifier
