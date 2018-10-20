@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.ConstrainedExecution;
-using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class TextSpiralController : MonoBehaviour
@@ -16,10 +13,13 @@ public class TextSpiralController : MonoBehaviour
 	public float ScaleMultiplier = 1;
 	public float AngleDelta;
 
+	public float AngularSpeed = 0.1f;
+	private float _scaleSpeed;
+
 	private void Start()
 	{
 		string content = ContentFile.text;
-		
+
 		float scale = 1;
 		float angle = Mathf.PI / 2;
 
@@ -43,5 +43,14 @@ public class TextSpiralController : MonoBehaviour
 			scale *= ScaleMultiplier;
 			angle -= AngleDelta;
 		}
+
+		// MATH
+		_scaleSpeed = Mathf.Pow(1 / ScaleMultiplier, AngularSpeed / AngleDelta);
+	}
+
+	private void Update()
+	{
+		transform.localScale *= Mathf.Pow(_scaleSpeed, Time.deltaTime);
+		transform.Rotate(Vector3.forward * AngularSpeed * Time.deltaTime * RAD);
 	}
 }
