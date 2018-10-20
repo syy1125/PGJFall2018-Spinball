@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4410963323707978}
   - component: {fileID: 212102844960837040}
   - component: {fileID: 50050320808952666}
+  - component: {fileID: 58943691924586440}
   - component: {fileID: 114824534635328670}
   m_Layer: 0
   m_Name: Player
@@ -54,7 +55,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -62,6 +63,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58943691924586440
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805007835537972}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &114824534635328670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,9 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb02cdd768a3004ca46c296ec81ebda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputStrength: 1
-  HorizontalAxisName: 
-  VerticalAxisName: 
+  InputStrength: 3
+  HorizontalAxisName: Horizontal
+  VerticalAxisName: Vertical
 --- !u!212 &212102844960837040
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -110,7 +126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 90
   m_Sprite: {fileID: 21300000, guid: 83d79aa12d58ce24a981d5d0e4f9962c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
