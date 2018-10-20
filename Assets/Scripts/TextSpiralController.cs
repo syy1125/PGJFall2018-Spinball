@@ -8,7 +8,7 @@ public class TextSpiralController : MonoBehaviour
 {
 	private const float RAD = 180 / Mathf.PI;
 
-	[TextArea] public string Content;
+	public TextAsset ContentFile;
 	public GameObject CharacterPrefab;
 
 	public float InitialRadius = 100;
@@ -18,10 +18,12 @@ public class TextSpiralController : MonoBehaviour
 
 	private void Start()
 	{
+		string content = ContentFile.text;
+		
 		float scale = 1;
 		float angle = Mathf.PI / 2;
 
-		for (int charIndex = 0; charIndex < Content.Length; charIndex++)
+		for (int charIndex = 0; charIndex < content.Length; charIndex++)
 		{
 			GameObject characterObject = Instantiate(
 				CharacterPrefab,
@@ -36,7 +38,7 @@ public class TextSpiralController : MonoBehaviour
 				0
 			);
 			characterObject.transform.localScale = new Vector3(scale * TextScale, scale * TextScale, scale * TextScale);
-			characterObject.GetComponent<Text>().text = Content[charIndex].ToString();
+			characterObject.GetComponent<Text>().text = content[charIndex].ToString();
 
 			scale *= ScaleMultiplier;
 			angle -= AngleDelta;

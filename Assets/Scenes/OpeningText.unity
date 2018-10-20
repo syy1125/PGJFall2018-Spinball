@@ -314,13 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d713693d3678fc4b925456180fe2204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Content: "In the not-too-distant future, catastrophe strikes. The Earth destabilizes,
-    rotating slower and slower in its orbit. The world is in chaos. As the days grow
-    longer and the nights stretch on, the natural state of the world falls apart.
-    Resources grow slim, countries are on the brink of war. Brothers and sisters have
-    turned on each other. Economies have crashed and nations have fallen. Despite
-    Science\u2019s best efforts, the Great Deceleration continues. The state of the
-    world has rapidly spiralled out of control.\r\n"
+  ContentFile: {fileID: 4900000, guid: 579f5d7d7a104cc2a99b9702c6137ca4, type: 3}
   CharacterPrefab: {fileID: 1551197905359634, guid: 5b4a787c9bd2d5c46a20ab10fd74b367,
     type: 2}
   InitialRadius: 80
