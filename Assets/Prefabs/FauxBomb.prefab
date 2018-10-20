@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4570074324897492}
   - component: {fileID: 212488206026204386}
   m_Layer: 0
-  m_Name: New Prefab
+  m_Name: FauxBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
