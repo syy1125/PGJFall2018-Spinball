@@ -25,7 +25,9 @@ public class Explosive : MonoBehaviour {
                 if (rb != null)
                 {
                     rb.velocity = Vector2.zero;
-                    rb.AddForce(rb.position - new Vector2(transform.position.x, transform.position.y) * blastForce);
+                    Vector2 direction = rb.position - new Vector2(transform.position.x, transform.position.y);
+                    direction.Normalize();
+                    rb.AddForce(direction * blastForce, ForceMode2D.Impulse);
                 }
             }
         }
