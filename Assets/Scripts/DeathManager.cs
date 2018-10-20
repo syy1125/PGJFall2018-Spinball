@@ -6,6 +6,10 @@ public class DeathManager : MonoBehaviour
 {
 	public float RespawnDelay;
 	public Text DeathDisplay;
+	public Vector3 respawnCenter;
+	public float respawnDistance;
+	public float killDistance;
+
 	private int _deaths;
 
 	private void Start()
@@ -16,6 +20,10 @@ public class DeathManager : MonoBehaviour
 
 	private void Update()
 	{
+		if((gameObject.transform.position - respawnCenter).magnitude >= killDistance)
+		{
+			Kill();
+		}
 //		if (Input.GetKeyDown(KeyCode.Space))
 //		{
 //			Kill();
@@ -35,7 +43,8 @@ public class DeathManager : MonoBehaviour
 
 		yield return new WaitForSeconds(RespawnDelay);
 
-		transform.position = new Vector3(1, 1, 0);
+		int angle = Random.Range(0, 360);
+		transform.position = new Vector3(Mathf.Cos(angle) * respawnDistance, Mathf.Sin(angle) * respawnDistance, 0);
 		gameObject.SetActive(true);
 	}
 
