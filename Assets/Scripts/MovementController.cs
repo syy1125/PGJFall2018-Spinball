@@ -23,11 +23,11 @@ public class MovementController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		float horiz = Input.GetAxis(HorizontalAxisName) * InputStrength;
-		float vert = Input.GetAxis(VerticalAxisName) * InputStrength;
-		Vector2 movementForce = new Vector2(horiz, vert);
-		float degrees =Vector2.Angle(_rigidbody2D.velocity, movementForce);
-		if( 150 > degrees )
+		float horiz = Input.GetAxis(HorizontalAxisName);
+		float vert = Input.GetAxis(VerticalAxisName);
+		Vector2 movementForce = new Vector2(horiz, vert).normalized * InputStrength;
+		float degrees = Vector2.Angle(_rigidbody2D.velocity, movementForce);
+		if (150 > degrees)
 		{
 			_rigidbody2D.AddForce(movementForce);
 		}
