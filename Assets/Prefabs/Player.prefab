@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58943691924586440}
   - component: {fileID: 114824534635328670}
   - component: {fileID: 114133838626953850}
+  - component: {fileID: 114287988912508540}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -91,6 +92,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 0.2
+--- !u!114 &114287988912508540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805007835537972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0045b83b7a4d1ae45b39dc1c7d434a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RespawnDelay: 5
+  PlayerIndex: 0
 --- !u!114 &114824534635328670
 MonoBehaviour:
   m_ObjectHideFlags: 1
