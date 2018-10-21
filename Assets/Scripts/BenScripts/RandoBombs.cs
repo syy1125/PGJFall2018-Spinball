@@ -10,6 +10,7 @@ public class RandoBombs : MonoBehaviour {
     public float cooldown = 0.0f;   //time between bomb drops
 
     public float radiusLimit = 0.0f;
+    public float radiusMinimum = 0.0f;
 
     private float stopwatch;
     private float bombStopwatch;
@@ -33,7 +34,15 @@ public class RandoBombs : MonoBehaviour {
             if (bombStopwatch > cooldown)
             {
                 bombStopwatch = 0;
-                Vector2 placement = new Vector2(Random.insideUnitCircle.x * radiusLimit, Random.insideUnitCircle.y * radiusLimit);
+                float x = 0;
+                float y = 0;
+                while (Mathf.Abs(x) < radiusMinimum || Mathf.Abs(y) < radiusMinimum)
+                {
+                    x = Random.insideUnitCircle.x * radiusLimit;
+                    y = Random.insideUnitCircle.y * radiusLimit;
+                }
+                //Vector2 placement = new Vector2(Random.insideUnitCircle.x * radiusLimit, Random.insideUnitCircle.y * radiusLimit);
+                Vector2 placement = new Vector2(x, y);
                 GameObject bomb = (GameObject)Instantiate(bombPrefab, placement, Quaternion.identity);
             }
         }

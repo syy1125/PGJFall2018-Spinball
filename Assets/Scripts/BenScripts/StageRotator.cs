@@ -14,6 +14,16 @@ public class StageRotator : MonoBehaviour {
 
     private float stopwatch;
 
+    public static StageRotator Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+            Destroy(gameObject);
+        else
+            Instance = this;
+    }
+
     private void Start()
     {
         stopwatch = 0.0f;
