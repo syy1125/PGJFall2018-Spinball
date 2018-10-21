@@ -20,8 +20,8 @@ public class MovementController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		float horiz = Input.GetAxis(HorizontalAxisName);
-		float vert = Input.GetAxis(VerticalAxisName);
+		float horiz = Input.GetAxisRaw(HorizontalAxisName);
+		float vert = Input.GetAxisRaw(VerticalAxisName);
 		
 		// We multiply by Resistance here to counteract the effect of mass multiplier
 		Vector2 movementForce =new Vector2(horiz, vert).normalized 
