@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212748052990852800}
   - component: {fileID: 58996854246500398}
   - component: {fileID: 114341142283274588}
+  - component: {fileID: 114840186644063212}
   m_Layer: 0
   m_Name: InnerBomb
   m_TagString: Untagged
@@ -77,6 +78,17 @@ MonoBehaviour:
     m_Bits: 4294967295
   explosionObject: {fileID: 1538984847893892, guid: d9f2af271d6cdee4f8df2a350a39611d,
     type: 2}
+--- !u!114 &114840186644063212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063686496911866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31465da2e3692de4d85dec610b825cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212748052990852800
 SpriteRenderer:
   m_ObjectHideFlags: 1

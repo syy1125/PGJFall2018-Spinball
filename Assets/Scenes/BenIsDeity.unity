@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174606160}
   - component: {fileID: 174606159}
+  - component: {fileID: 174606161}
   m_Layer: 0
   m_Name: Stage
   m_TagString: Untagged
@@ -283,6 +284,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &174606161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 174606158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28157d322c7e69245a00ce8bbc7d0be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdown: 2
+  rampModifier: 3
+  rotationalSpeed: 0
+  maxSpeed: 60
 --- !u!1 &273354339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,6 +1145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733069777}
   - component: {fileID: 1733069776}
+  - component: {fileID: 1733069778}
   m_Layer: 0
   m_Name: Bombos
   m_TagString: Untagged
@@ -1147,7 +1164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b44071892c23c949a7578ccfc94a79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefab: {fileID: 1748170147716288, guid: 319c4aad652855c4a8227ba29b431580, type: 2}
+  bombPrefab: {fileID: 1831156044966024, guid: 36d6fefbd6f0e0d44b36b4339e7c509e, type: 2}
   edgeDistance: 34
   numBombs: 30
 --- !u!4 &1733069777
@@ -1163,6 +1180,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1733069778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1733069775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f040f7a909a95354893f7d4d7247fa32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 1063686496911866, guid: 99ed62bf7d9ac8b4db243ef4e65ba78a, type: 2}
+  countdown: 0
+  cooldown: 0
+  radiusLimit: 25
+  radiusMinimum: 7
 --- !u!1 &1841862749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1639,8 @@ MonoBehaviour:
   timeBeforeDecay: 5
   startingV: 0.4
   vIncrement: 0.1
+  startingShadowScale: 0
+  shadowScaleIncrement: 0
 --- !u!58 &1993774482
 CircleCollider2D:
   m_ObjectHideFlags: 0

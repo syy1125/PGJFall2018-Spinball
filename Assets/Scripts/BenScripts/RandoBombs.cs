@@ -35,12 +35,10 @@ public class RandoBombs : MonoBehaviour {
             {
                 bombStopwatch = 0;
 
-                Vector2 placement = Random.insideUnitCircle;
+                Vector2 placement = Random.insideUnitCircle * radiusLimit;
 
                 while (Mathf.Abs(placement.x) < radiusMinimum && Mathf.Abs(placement.y) < radiusMinimum)
-                {
-                    placement = Random.insideUnitCircle;
-                }
+                    placement = Random.insideUnitCircle * radiusLimit;
                 
                 GameObject bomb = (GameObject)Instantiate(bombPrefab, placement, Quaternion.identity);
             }
