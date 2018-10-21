@@ -21,6 +21,7 @@ public class PlayerCollision : MonoBehaviour
 		{
 			// Debug.Log("mine : " + _rigidbody2D.velocity);
 			// Debug.Log("other: " + rb.velocity);
+			AudioManager.instance.PlayClangSound();
 			float mag = _rigidbody2D.velocity.magnitude * collisionDamping;
 			_rigidbody2D.velocity = (transform.position - other.transform.position) * rb.velocity.magnitude * collisionDamping;
 			rb.velocity = (other.transform.position - transform.position) * mag;

@@ -17,6 +17,7 @@ public class Explosive : MonoBehaviour {
 
     private void Explosion()
     {
+        PlayBombSound();
         ContactFilter2D contact = new ContactFilter2D();
         contact.layerMask = mask;
         Collider2D[] results = new Collider2D[10];
@@ -26,7 +27,6 @@ public class Explosive : MonoBehaviour {
         {
             for (int i = 0; i < hitByBlast; ++i)
             {
-                Debug.Log(results[i].gameObject);
                 Rigidbody2D rb = results[i].GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
@@ -67,5 +67,10 @@ public class Explosive : MonoBehaviour {
                 Bounce(collision);
             }
         }
+    }
+
+    void PlayBombSound()
+    {
+        AudioManager.instance.PlayBombSound();
     }
 }
