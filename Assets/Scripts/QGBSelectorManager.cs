@@ -25,17 +25,6 @@ public class QGBSelectorManager : MonoBehaviour
 		}
 	}
 
-	[Serializable]
-	public struct QuantumGyroBlade
-	{
-		public string Name;
-		public Sprite PlayerOneSprite;
-		public Sprite PlayerTwoSprite;
-		public float Power;
-		public float Resistance;
-		public float Acceleration;
-	}
-
 	public Sprite Fallback;
 	public QuantumGyroBlade[] GyroBlades;
 	public QuantumGyroBlade Chonnole;

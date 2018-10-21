@@ -805,14 +805,14 @@ MonoBehaviour:
     Resistance: 2
     Acceleration: 2
   - Name: Arrows
-    PlayerOneSprite: {fileID: 0}
+    PlayerOneSprite: {fileID: 21300000, guid: 6c667d681976e274d91f283e5996d486, type: 3}
     PlayerTwoSprite: {fileID: 0}
     Power: 2
     Resistance: 1
     Acceleration: 3
   - Name: Shockwave
     PlayerOneSprite: {fileID: 0}
-    PlayerTwoSprite: {fileID: 0}
+    PlayerTwoSprite: {fileID: 21300000, guid: c60b9ba91633586469d3418601f1d1d7, type: 3}
     Power: 3
     Resistance: 1
     Acceleration: 2
