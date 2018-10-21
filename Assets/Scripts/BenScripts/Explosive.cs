@@ -10,6 +10,11 @@ public class Explosive : MonoBehaviour {
     public float blastRadius = 1.0f;
     public LayerMask mask = -1;
 
+    void Update()
+    {
+        transform.Rotate(0, 0, Random.Range(-2, 2));
+    }
+
     private void Explosion()
     {
         ContactFilter2D contact = new ContactFilter2D();
