@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RandoBombs : MonoBehaviour {
 
-    public GameObject bombPrefab;
+    public GameObject[] itemPrefabs;
+    public float[] itemProbabilites;
 
     public int countdown = 0;       //time before bomb dropping begin
     public float cooldown = 0.0f;   //time between bomb drops
@@ -40,8 +41,28 @@ public class RandoBombs : MonoBehaviour {
                 while (Mathf.Abs(placement.x) < radiusMinimum && Mathf.Abs(placement.y) < radiusMinimum)
                     placement = Random.insideUnitCircle * radiusLimit;
                 
-                GameObject bomb = (GameObject)Instantiate(bombPrefab, placement, Quaternion.identity);
+                GameObject bomb = (GameObject)Instantiate(itemPrefabs[getItemIndex()], placement, Quaternion.identity);
             }
         }
 	}
+
+    int getItemIndex()
+    {
+        float sum = 0;
+        for(int x = 0; x < itemProbabilites.Length; ++x)
+        {
+            sum += itemProbabilites[x];
+        }
+        float rand = Random.Range(0, sum);
+        float temp = 0;
+        for(int x = 0; x < itemProbabilites.Length; ++x)
+        {
+            temp += itemProbabilites[x];
+            if(rand <= temp)
+            {
+                return x;
+            }
+        }
+        return 0;
+    }
 }

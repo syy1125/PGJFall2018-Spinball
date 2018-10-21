@@ -26,6 +26,18 @@ public class BoostPadAccelerator : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        GameObject theThing = col.gameObject;
+        Rigidbody2D rb = theThing.GetComponent<Rigidbody2D>();
+        if (theThing.CompareTag("Player") && rb != null)
+        {
+            Debug.Log("old: " + rb.velocity);
+            rb.velocity = new Vector2(rb.velocity.x * 1.5f, rb.velocity.y * 1.5f);
+            Debug.Log("new: "+ rb.velocity);
+        }
+    }
+
     private void FixedUpdate()
     {
         timeElapsed += Time.fixedDeltaTime;

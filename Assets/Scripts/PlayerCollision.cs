@@ -46,10 +46,10 @@ public class PlayerCollision : MonoBehaviour
 	{
 		GameObject other = col.gameObject;
 		Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-		QuantumGyroBlade opponentQGB = other.GetComponent<MovementController>().QGB;
 
 		if (rb != null && other.CompareTag("Player"))
 		{
+			QuantumGyroBlade opponentQGB = other.GetComponent<MovementController>().QGB;
 			AudioManager.instance.PlayClangSound();
 			float mag = _rigidbody2D.velocity.magnitude;
 			_rigidbody2D.velocity = (transform.position - other.transform.position)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28157d322c7e69245a00ce8bbc7d0be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 1
+  countdown: 60
   rampModifier: 3
   rotationalSpeed: 0
   maxSpeed: 60
@@ -6993,9 +6993,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f040f7a909a95354893f7d4d7247fa32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefab: {fileID: 1241891972629268, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-  countdown: 3
-  cooldown: 1
+  itemPrefabs:
+  - {fileID: 1063686496911866, guid: 99ed62bf7d9ac8b4db243ef4e65ba78a, type: 2}
+  - {fileID: 1515367968784336, guid: 9336093a203271442b7c56ec0d2d3060, type: 2}
+  itemProbabilites:
+  - 0.8
+  - 0.2
+  countdown: 90
+  cooldown: 4
   radiusLimit: 25
   radiusMinimum: 5
 --- !u!1 &1739575038
@@ -7031,7 +7036,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.8895392}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.19999695}
+  m_AnchoredPosition: {x: 0, y: -0.2000122}
   m_SizeDelta: {x: -489.7, y: 0.3999939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1739575040
