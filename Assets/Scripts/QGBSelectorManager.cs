@@ -65,8 +65,6 @@ public class QGBSelectorManager : MonoBehaviour
 	public GameObject P2ReadyArrow;
 	public GameObject P2UnreadyArrow;
 
-	private readonly Regex _numberRegex = new Regex(@"\D");
-
 	private class PlayerSelectionState
 	{
 		public int Index;
@@ -98,6 +96,11 @@ public class QGBSelectorManager : MonoBehaviour
 		_countdownBaseText = CountdownDisplay.GetComponentInChildren<Text>().text;
 		CountdownDisplay.SetActive(false);
 		_inCountdown = false;
+
+		if (GameStateManager.Instance.ChonnoleUnlocked)
+		{
+			UnlockQGB(Chonnole);
+		}
 
 		UpdateUI();
 	}
