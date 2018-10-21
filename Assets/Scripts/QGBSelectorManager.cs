@@ -26,7 +26,8 @@ public class QGBSelectorManager : MonoBehaviour
 		}
 	}
 
-	[FormerlySerializedAs("Fallback")] public Sprite FallbackSprite;
+	public GameObject FallbackRendererPrefab;
+	public float RenderScale = 20;
 	public QuantumGyroBlade[] GyroBlades;
 	public QuantumGyroBlade Chonnole;
 	public InputField PasswordInput;
@@ -37,12 +38,12 @@ public class QGBSelectorManager : MonoBehaviour
 	public string P2VerticalAxisName;
 	public float Interval = 1;
 
-	public Image P1Image;
+	public GameObject P1Preview;
 	public Text P1Name;
 	public Text P1Stats;
 	public Image P1Background;
 
-	public Image P2Image;
+	public GameObject P2Preview;
 	public Text P2Name;
 	public Text P2Stats;
 	public Image P2Background;
@@ -121,6 +122,19 @@ public class QGBSelectorManager : MonoBehaviour
 		}
 	}
 
+	private void SetPreview(Transform preview, GameObject playerRendererPrefab)
+	{
+		foreach (Transform child in preview)
+		{
+			Destroy(child.gameObject);
+		}
+
+		if (playerRendererPrefab == null) playerRendererPrefab = FallbackRendererPrefab;
+
+		GameObject playerRenderer = Instantiate(playerRendererPrefab, preview);
+		playerRenderer.transform.localScale *= RenderScale;
+	}
+
 	private string FormatStats(QuantumGyroBlade qgb)
 	{
 		return "Power: " + qgb.Power + "\n"
@@ -128,30 +142,16 @@ public class QGBSelectorManager : MonoBehaviour
 		       + "Acceleration: " + qgb.Acceleration;
 	}
 
-	private Sprite GetSprite(GameObject prefab)
-	{
-		if (prefab == null) return FallbackSprite;
-		
-		SpriteRenderer playerSpriteRenderer = prefab.GetComponent<SpriteRenderer>();
-
-		if (playerSpriteRenderer != null && playerSpriteRenderer.sprite != null)
-		{
-			return playerSpriteRenderer.sprite;
-		}
-
-		return FallbackSprite;
-	}
-
 	private void UpdateUI()
 	{
 		QuantumGyroBlade p1QGB = GyroBlades[_p1State.Index];
-		P1Image.sprite = GetSprite(p1QGB.P1RendererPrefab);
+		SetPreview(P1Preview.transform, p1QGB.P1RendererPrefab);
 		P1Name.text = p1QGB.Name;
 		P1Stats.text = FormatStats(p1QGB);
 		P1Background.color = _p1State.Ready ? Color.green : Color.white;
 
 		QuantumGyroBlade p2QGB = GyroBlades[_p2State.Index];
-		P2Image.sprite = GetSprite(p2QGB.P2RendererPrefab);
+		SetPreview(P2Preview.transform, p2QGB.P2RendererPrefab);
 		P2Name.text = p2QGB.Name;
 		P2Stats.text = FormatStats(p2QGB);
 		P2Background.color = _p2State.Ready ? Color.green : Color.white;
