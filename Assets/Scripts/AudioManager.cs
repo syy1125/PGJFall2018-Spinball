@@ -6,9 +6,10 @@ public class AudioManager : MonoBehaviour
 {
 	public static AudioManager instance;
 
-	public AudioClip bomb;
+	public AudioClip[] bombs;
 	public AudioClip[] clangs;
 	public AudioClip[] bumperBings;
+	public AudioClip deathSound;
 
 	private AudioSource source;
 
@@ -26,12 +27,25 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayBombSound()
 	{
-		source.PlayOneShot(bomb, 1f);
+		source.PlayOneShot(bombs[Random.Range(0, bombs.Length)], 1f);
 	}
 
 	public void PlayClangSound()
 	{
-		source.PlayOneShot(clangs[Random.Range(0, clangs.Length)]);
+		StartCoroutine(PlayOneShotClang());
+	}
+
+	private IEnumerator PlayOneShotClang()
+	{
+		int numClangs = Random.Range(2, 4);
+		for(int x = 0; x < numClangs; ++x)
+		{
+			source.PlayOneShot(clangs[Random.Range(0, clangs.Length)]);
+			for(int y = 0; y < 5; ++y)
+			{
+				yield return null;
+			}
+		}
 	}
 
 	public void PlayBingSound(int index)
@@ -40,5 +54,10 @@ public class AudioManager : MonoBehaviour
 		index = Mathf.Min(bumperBings.Length - 1, index);
 		//Debug.Log("2:" + index);
 		source.PlayOneShot(bumperBings[bumperBings.Length - 1 - index]);
+	}
+
+	public void PlayDeathSound()
+	{
+		source.PlayOneShot(deathSound);
 	}
 }

@@ -37,6 +37,7 @@ public class DeathManager : MonoBehaviour
 
 	private IEnumerator RespawnSequence()
 	{
+		AudioManager.instance.PlayDeathSound();
 		gameObject.SetActive(false);
 		_deaths++;
 		UpdateDeathDisplay();
