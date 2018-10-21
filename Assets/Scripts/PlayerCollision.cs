@@ -27,7 +27,7 @@ public class PlayerCollision : MonoBehaviour
 		if (rb != null && other.CompareTag("Player"))
 		{
 			QuantumGyroBlade opponentQGB = other.GetComponent<MovementController>().QGB;
-			Feedback(other, col.contacts[0].point);
+			Feedback(other, col.contacts[0].point, _rigidbody2D.velocity.magnitude + rb.velocity.magnitude);
 			float mag = _rigidbody2D.velocity.magnitude;
 			_rigidbody2D.velocity = (transform.position - other.transform.position)
 			                        * rb.velocity.magnitude
@@ -65,10 +65,11 @@ public class PlayerCollision : MonoBehaviour
 		}
 	}
 
-	void Feedback(GameObject other, Vector3 toSpawn)
+	void Feedback(GameObject other, Vector3 toSpawn, float totalMagnitude)
 	{
 		AudioManager.instance.PlayClangSound();
 		_particleSystem.transform.position = toSpawn;
+		Camera.main.GetComponent<CameraController>().ScreenShake(totalMagnitude);
 		// UnityEngine.ParticleSystem.ShapeModule editableShape = _particleSystem.shape;
 		// Vector3 newRotation = new Vector3(0, 0, Vector2.SignedAngle(Vector2.down, other.transform.position - transform.position) + 45);
 		// editableShape.rotation = newRotation;
