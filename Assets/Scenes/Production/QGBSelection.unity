@@ -796,36 +796,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac809840f33aec4cbd67e3538c28f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fallback: {fileID: 21300000, guid: 83d79aa12d58ce24a981d5d0e4f9962c, type: 3}
+  FallbackSprite: {fileID: 21300000, guid: 83d79aa12d58ce24a981d5d0e4f9962c, type: 3}
   GyroBlades:
   - Name: Default
-    PlayerOneSprite: {fileID: 21300000, guid: 8390bdcff9b316443834174d49b870c1, type: 3}
-    PlayerTwoSprite: {fileID: 21300000, guid: 06a2af2904d57f04ca19cb6516e746fa, type: 3}
+    P1RendererPrefab: {fileID: 1134215107169180, guid: c7c6423d921dcb24a8e670a53e813deb,
+      type: 2}
+    P2RendererPrefab: {fileID: 1920311373711724, guid: 7eaf3e0b92174cb479ae9ea6263d4b48,
+      type: 2}
     Power: 2
     Resistance: 2
     Acceleration: 2
   - Name: Arrows
-    PlayerOneSprite: {fileID: 21300000, guid: 6c667d681976e274d91f283e5996d486, type: 3}
-    PlayerTwoSprite: {fileID: 21300000, guid: b4a0157330954b44b87e6b4858fe08bf, type: 3}
+    P1RendererPrefab: {fileID: 1134215107169180, guid: b505edd723aa43a49b22715f77077066,
+      type: 2}
+    P2RendererPrefab: {fileID: 1920311373711724, guid: 660f9427662f23e4c85b97734efe3c1a,
+      type: 2}
     Power: 2
     Resistance: 1
     Acceleration: 3
   - Name: Shockwave
-    PlayerOneSprite: {fileID: 21300000, guid: 3624b7714704f3b40a24e3bbb9f04cee, type: 3}
-    PlayerTwoSprite: {fileID: 21300000, guid: c60b9ba91633586469d3418601f1d1d7, type: 3}
+    P1RendererPrefab: {fileID: 1516162714561376, guid: 035e06cfc2a893542a3258fd3cbb2b0b,
+      type: 2}
+    P2RendererPrefab: {fileID: 1484789797668910, guid: 43d7500074ab8234385758f86e89ed1a,
+      type: 2}
     Power: 3
     Resistance: 1
     Acceleration: 2
   - Name: Ubisoft
-    PlayerOneSprite: {fileID: 0}
-    PlayerTwoSprite: {fileID: 0}
+    P1RendererPrefab: {fileID: 0}
+    P2RendererPrefab: {fileID: 0}
     Power: 3
     Resistance: 1
     Acceleration: 3
   Chonnole:
     Name: Chonnole
-    PlayerOneSprite: {fileID: 0}
-    PlayerTwoSprite: {fileID: 0}
+    P1RendererPrefab: {fileID: 0}
+    P2RendererPrefab: {fileID: 0}
     Power: 3
     Resistance: 3
     Acceleration: 3

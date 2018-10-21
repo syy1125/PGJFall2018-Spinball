@@ -130,6 +130,8 @@ public class QGBSelectorManager : MonoBehaviour
 
 	private Sprite GetSprite(GameObject prefab)
 	{
+		if (prefab == null) return FallbackSprite;
+		
 		SpriteRenderer playerSpriteRenderer = prefab.GetComponent<SpriteRenderer>();
 
 		if (playerSpriteRenderer != null && playerSpriteRenderer.sprite != null)
