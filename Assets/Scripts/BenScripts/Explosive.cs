@@ -10,7 +10,7 @@ public class Explosive : MonoBehaviour {
     public float blastRadius = 1.0f;
     public LayerMask mask = -1;
 
-    public Animation explosion;
+    public GameObject explosionObject;
 
     void Update()
     {
@@ -20,6 +20,7 @@ public class Explosive : MonoBehaviour {
     private void Explosion()
     {
         PlayBombSound();
+        Instantiate(explosionObject, this.transform.position, Quaternion.identity);
         ContactFilter2D contact = new ContactFilter2D();
         contact.layerMask = mask;
         Collider2D[] results = new Collider2D[10];
@@ -61,9 +62,8 @@ public class Explosive : MonoBehaviour {
 
             if (health == 0)
             {
-                //Explosion();
-                explosion.Play();
-                //Destroy(this.gameObject, 0.1f);
+                Explosion();
+                Destroy(gameObject);
             }
             else
             {
