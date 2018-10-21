@@ -59,12 +59,14 @@ public class QGBSelectorManager : MonoBehaviour
 	public GameObject P1Preview;
 	public Text P1Name;
 	public Text P1Stats;
-	public Image P1Background;
+	public GameObject P1ReadyArrow;
+	public GameObject P1UnreadyArrow;
 
 	public GameObject P2Preview;
 	public Text P2Name;
 	public Text P2Stats;
-	public Image P2Background;
+	public GameObject P2ReadyArrow;
+	public GameObject P2UnreadyArrow;
 
 	private readonly Regex _numberRegex = new Regex(@"\D");
 
@@ -176,13 +178,15 @@ public class QGBSelectorManager : MonoBehaviour
 		SetPreview(P1Preview.transform, p1QGB.P1RendererPrefab);
 		P1Name.text = p1QGB.Name;
 		P1Stats.text = FormatStats(p1QGB);
-		P1Background.color = _p1State.Ready ? Color.green : Color.white;
+		P1ReadyArrow.SetActive(!_p1State.Ready);
+		P1UnreadyArrow.SetActive(_p1State.Ready);
 
 		QuantumGyroBlade p2QGB = GyroBlades[_p2State.Index];
 		SetPreview(P2Preview.transform, p2QGB.P2RendererPrefab);
 		P2Name.text = p2QGB.Name;
 		P2Stats.text = FormatStats(p2QGB);
-		P2Background.color = _p2State.Ready ? Color.green : Color.white;
+		P2ReadyArrow.SetActive(!_p2State.Ready);
+		P2UnreadyArrow.SetActive(_p2State.Ready);
 	}
 
 	private void UpdateSpinState(PlayerSelectionState state, Transform t)
