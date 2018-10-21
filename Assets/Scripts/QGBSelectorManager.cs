@@ -34,7 +34,9 @@ public class QGBSelectorManager : MonoBehaviour
 	public float RenderScale = 20;
 	public QuantumGyroBlade[] GyroBlades;
 	public QuantumGyroBlade Chonnole;
+	
 	public InputField PasswordInput;
+	public NotificationManager Notifications;
 
 	public string P1HorizontalAxisName;
 	public string P1VerticalAxisName;
@@ -215,7 +217,7 @@ public class QGBSelectorManager : MonoBehaviour
 
 	private void UnlockQGB(QuantumGyroBlade toUnlock)
 	{
-		Debug.Log("Unlocking " + toUnlock.Name);
+		Notifications.DisplayNotification("Unlocked QGB: " + toUnlock.Name);
 
 		QuantumGyroBlade[] newGyroBlades = new QuantumGyroBlade[GyroBlades.Length + 1];
 
