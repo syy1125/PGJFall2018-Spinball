@@ -838,9 +838,11 @@ MonoBehaviour:
   P1Image: {fileID: 1949229186}
   P1Name: {fileID: 838479711}
   P1Stats: {fileID: 301094334}
+  P1Background: {fileID: 1822333129}
   P2Image: {fileID: 1023283388}
   P2Name: {fileID: 767797097}
   P2Stats: {fileID: 1506563775}
+  P2Background: {fileID: 289535182}
 --- !u!114 &1125727581
 MonoBehaviour:
   m_ObjectHideFlags: 0
