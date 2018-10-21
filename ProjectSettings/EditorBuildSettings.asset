@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Production/QGBSelection.unity
     guid: 898906aeebe01dc4d92e36805cb6d106
+  - enabled: 1
+    path: Assets/Scenes/Production/MainMenu.unity
+    guid: 80969b9fdc0562741965dddef6e1619c
+  - enabled: 1
+    path: Assets/Scenes/Production/OpeningText.unity
+    guid: 5c73f7bf3d47a2548ae72e4a9dc1070c
   m_configObjects: {}

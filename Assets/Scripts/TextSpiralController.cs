@@ -55,7 +55,10 @@ public class TextSpiralController : MonoBehaviour
 
 		if (Input.anyKeyDown)
 		{
-			GameStateManager.Instance.GoToCharacterSelection();
+			if (!Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetKeyDown(KeyCode.Mouse1))
+			{
+				GameStateManager.Instance.GoToMainMenu();
+			}
 		}
 	}
 }

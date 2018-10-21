@@ -20,7 +20,12 @@ public class GameStateManager : MonoBehaviour
 		}
 	}
 
-	public void GoToCharacterSelection()
+	public void GoToMainMenu()
+	{
+		SceneManager.LoadScene("MainMenu");
+	}
+
+	public void GoToQGBSelection()
 	{
 		SceneManager.LoadScene("QGBSelection");
 	}
