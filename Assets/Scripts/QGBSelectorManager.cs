@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
+using System.Runtime.ConstrainedExecution;
+using System.Security.Permissions;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
@@ -12,6 +14,8 @@ using UnityEngine.UI;
 
 public class QGBSelectorManager : MonoBehaviour
 {
+	private const float RAD = 180 / Mathf.PI;
+
 	public static QGBSelectorManager Instance;
 
 	private void Awake()
@@ -37,6 +41,8 @@ public class QGBSelectorManager : MonoBehaviour
 	public string P2HorizontalAxisName;
 	public string P2VerticalAxisName;
 	public float Interval = 1;
+	public float MaxReadySpeed = 1;
+	public float ReadyBuildupTime = 1;
 
 	public GameObject P1Preview;
 	public Text P1Name;
@@ -54,6 +60,8 @@ public class QGBSelectorManager : MonoBehaviour
 	{
 		public int Index;
 		public bool Ready;
+		public float Speed;
+		public bool Complete;
 		public float LastLeft;
 		public float LastRight;
 
@@ -61,6 +69,8 @@ public class QGBSelectorManager : MonoBehaviour
 		{
 			Index = 0;
 			Ready = false;
+			Speed = 0;
+			Complete = false;
 			LastLeft = Time.time;
 			LastRight = Time.time;
 		}
@@ -68,11 +78,13 @@ public class QGBSelectorManager : MonoBehaviour
 
 	private PlayerSelectionState _p1State;
 	private PlayerSelectionState _p2State;
+	private bool _selectionLockout;
 
 	private void Start()
 	{
 		_p1State = new PlayerSelectionState();
 		_p2State = new PlayerSelectionState();
+		_selectionLockout = false;
 
 		UpdateUI();
 	}
@@ -83,6 +95,9 @@ public class QGBSelectorManager : MonoBehaviour
 		string verticalAxisName
 	)
 	{
+		if (PasswordInput.isFocused) return;
+		if (_selectionLockout) return;
+		
 		if (state.Ready)
 		{
 			if (Input.GetAxisRaw(verticalAxisName) < 0)
@@ -157,25 +172,45 @@ public class QGBSelectorManager : MonoBehaviour
 		P2Background.color = _p2State.Ready ? Color.green : Color.white;
 	}
 
+	private void UpdateSpinSpeed(PlayerSelectionState state, Transform t)
+	{
+		if (state.Ready)
+		{
+			state.Speed += Time.deltaTime / ReadyBuildupTime * MaxReadySpeed;
+			if (state.Speed > MaxReadySpeed)
+			{
+				state.Complete = true;
+				state.Speed = MaxReadySpeed;
+			}
+
+			t.Rotate(Vector3.forward, state.Speed * Mathf.PI * 2 * Time.deltaTime * RAD);
+		}
+		else
+		{
+			state.Speed = 0;
+			state.Complete = false;
+			t.rotation = Quaternion.identity;
+		}
+	}
+
 	private void Update()
 	{
 		UpdatePlayerSelection(_p1State, P1HorizontalAxisName, P1VerticalAxisName);
 		UpdatePlayerSelection(_p2State, P2HorizontalAxisName, P2VerticalAxisName);
+
+		UpdateSpinSpeed(_p1State, P1Preview.transform);
+		UpdateSpinSpeed(_p2State, P2Preview.transform);
 	}
 
-	public void OnPasswordInputChange(string pass)
+	public void OnPasswordInput(string pass)
 	{
-		PasswordInput.text = _numberRegex.Replace(pass, "");
-
-		if (PasswordInput.text.Equals("7639"))
+		if (pass.Equals("7639"))
 		{
+			GameStateManager.Instance.ChonnoleUnlocked = true;
 			UnlockQGB(Chonnole);
 		}
 
-		if (PasswordInput.text.Length >= 4)
-		{
-			PasswordInput.text = "";
-		}
+		PasswordInput.text = "";
 	}
 
 	private void UnlockQGB(QuantumGyroBlade toUnlock)

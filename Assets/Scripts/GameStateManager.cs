@@ -5,6 +5,8 @@ public class GameStateManager : MonoBehaviour
 {
 	public static GameStateManager Instance;
 
+	public bool ChonnoleUnlocked = false;
+
 	private void Awake()
 	{
 		if (Instance != null)
