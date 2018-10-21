@@ -2642,8 +2642,10 @@ MonoBehaviour:
     Acceleration: 3
   Chonnole:
     Name: Chonnole
-    P1RendererPrefab: {fileID: 0}
-    P2RendererPrefab: {fileID: 0}
+    P1RendererPrefab: {fileID: 1516162714561376, guid: 61c6b429af70d4c43ba21eb3cf70f921,
+      type: 2}
+    P2RendererPrefab: {fileID: 1920311373711724, guid: 3bb5c00454a761f488ce227fc789d2bd,
+      type: 2}
     Power: 3
     Resistance: 3
     Acceleration: 3
