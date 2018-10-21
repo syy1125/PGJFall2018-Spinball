@@ -667,7 +667,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 92e3566922362604e988b2be2a1fe75a, type: 3}
   - {fileID: 8300000, guid: c2a70a1448ba2bb499ceb9c3f4b2a5e0, type: 3}
   - {fileID: 8300000, guid: 41b9f3c498b59ed40a4cd8d2c6cd7d0f, type: 3}
-  bumperBings: []
+  bumperBings:
+  - {fileID: 8300000, guid: 3eda23f31dc0e7c48afcf4a30c64ba5b, type: 3}
+  - {fileID: 8300000, guid: bacc2ad5492a90843b53cc7ae98d10db, type: 3}
+  - {fileID: 8300000, guid: f429ffaa7fa84cf4a8538bbe08f8bc2a, type: 3}
+  - {fileID: 8300000, guid: 44b877d4c796f4648b3ea0c507279fc0, type: 3}
+  - {fileID: 8300000, guid: 53741b2b9a75fee499952c100dedb819, type: 3}
 --- !u!4 &1025173287
 Transform:
   m_ObjectHideFlags: 0

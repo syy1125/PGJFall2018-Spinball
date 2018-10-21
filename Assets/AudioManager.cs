@@ -33,4 +33,9 @@ public class AudioManager : MonoBehaviour
 	{
 		source.PlayOneShot(clangs[Random.Range(0, clangs.Length)]);
 	}
+
+	public void PlayBingSound()
+	{
+		source.PlayOneShot(bumperBings[Random.Range(0, bumperBings.Length)]);
+	}
 }

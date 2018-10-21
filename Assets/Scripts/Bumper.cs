@@ -47,6 +47,7 @@ public class Bumper : MonoBehaviour
 		Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
 		if(rb != null)
 		{
+			AudioManager.instance.PlayBingSound();
 			rb.velocity = Vector2.zero;
 			rb.AddForce(currentBounceForce * (col.gameObject.transform.position - this.transform.position) );
 			currentBounceForce += bounceIncrement;
