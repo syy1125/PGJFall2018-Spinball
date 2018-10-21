@@ -36,7 +36,9 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayBingSound(int index)
 	{
-		index = Mathf.Min(bumperBings.Length, index);
+		//Debug.Log("1:" + index);
+		index = Mathf.Min(bumperBings.Length - 1, index);
+		//Debug.Log("2:" + index);
 		source.PlayOneShot(bumperBings[bumperBings.Length - 1 - index]);
 	}
 }
