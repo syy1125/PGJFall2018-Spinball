@@ -34,7 +34,7 @@ public class QGBSelectorManager : MonoBehaviour
 	public float RenderScale = 20;
 	public QuantumGyroBlade[] GyroBlades;
 	public QuantumGyroBlade Chonnole;
-	
+
 	public InputField PasswordInput;
 	public NotificationManager Notifications;
 
@@ -43,8 +43,16 @@ public class QGBSelectorManager : MonoBehaviour
 	public string P2HorizontalAxisName;
 	public string P2VerticalAxisName;
 	public float Interval = 1;
+
 	public float MaxReadySpeed = 1;
 	public float ReadyBuildupTime = 1;
+	public int CountdownLength = 5;
+
+	[FormerlySerializedAs("CountdownTimerDisplay")]
+	public Text CountdownDisplay;
+
+	private String _countdownBaseText;
+	private bool _inCountdown;
 
 	public GameObject P1Preview;
 	public Text P1Name;
@@ -80,13 +88,13 @@ public class QGBSelectorManager : MonoBehaviour
 
 	private PlayerSelectionState _p1State;
 	private PlayerSelectionState _p2State;
-	private bool _selectionLockout;
 
 	private void Start()
 	{
 		_p1State = new PlayerSelectionState();
 		_p2State = new PlayerSelectionState();
-		_selectionLockout = false;
+		_countdownBaseText = CountdownDisplay.text;
+		_inCountdown = false;
 
 		UpdateUI();
 	}
@@ -98,8 +106,7 @@ public class QGBSelectorManager : MonoBehaviour
 	)
 	{
 		if (PasswordInput.isFocused) return;
-		if (_selectionLockout) return;
-		
+
 		if (state.Ready)
 		{
 			if (Input.GetAxisRaw(verticalAxisName) < 0)
@@ -174,7 +181,7 @@ public class QGBSelectorManager : MonoBehaviour
 		P2Background.color = _p2State.Ready ? Color.green : Color.white;
 	}
 
-	private void UpdateSpinSpeed(PlayerSelectionState state, Transform t)
+	private void UpdateSpinState(PlayerSelectionState state, Transform t)
 	{
 		if (state.Ready)
 		{
@@ -195,13 +202,43 @@ public class QGBSelectorManager : MonoBehaviour
 		}
 	}
 
+	private IEnumerator CountdownSequence()
+	{
+		_inCountdown = true;
+		CountdownDisplay.gameObject.SetActive(true);
+
+		float startTime = Time.time;
+
+		while (Time.time < startTime + CountdownLength)
+		{
+			if (!_p1State.Ready || !_p2State.Ready)
+			{
+				CountdownDisplay.text = _countdownBaseText;
+				CountdownDisplay.gameObject.SetActive(false);
+				_inCountdown = false;
+				yield break;
+			}
+
+			CountdownDisplay.text =
+				_countdownBaseText + "\n" +
+				Mathf.CeilToInt(startTime + CountdownLength - Time.time);
+
+			yield return new WaitForEndOfFrame();
+		}
+	}
+
 	private void Update()
 	{
 		UpdatePlayerSelection(_p1State, P1HorizontalAxisName, P1VerticalAxisName);
 		UpdatePlayerSelection(_p2State, P2HorizontalAxisName, P2VerticalAxisName);
 
-		UpdateSpinSpeed(_p1State, P1Preview.transform);
-		UpdateSpinSpeed(_p2State, P2Preview.transform);
+		UpdateSpinState(_p1State, P1Preview.transform);
+		UpdateSpinState(_p2State, P2Preview.transform);
+
+		if (_p1State.Complete && _p2State.Complete && !_inCountdown)
+		{
+			StartCoroutine(CountdownSequence());
+		}
 	}
 
 	public void OnPasswordInput(string pass)
