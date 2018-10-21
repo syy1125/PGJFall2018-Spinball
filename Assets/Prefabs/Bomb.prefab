@@ -71,7 +71,7 @@ MonoBehaviour:
   health: 1
   blastForce: 35
   bounceForce: 0
-  blastRadius: 30
+  blastRadius: 7
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -110,7 +110,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb178e1ff13333d40a745e69962ed704, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7db8efad019ad7b408b63ec9062b6791, type: 3}
   m_Color: {r: 0.385, g: 0.385, b: 0.385, a: 1}
   m_FlipX: 0
   m_FlipY: 0
