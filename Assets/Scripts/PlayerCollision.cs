@@ -11,10 +11,12 @@ public class PlayerCollision : MonoBehaviour
 	public QuantumGyroBlade QGB;
 
 	private Rigidbody2D _rigidbody2D;
+	private ParticleSystem _particleSystem;
 
 	private void Start()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
+		_particleSystem = GetComponent<ParticleSystem>();
 	}
 
 	private void OnCollisionEnter2D(Collision2D col)
@@ -25,7 +27,7 @@ public class PlayerCollision : MonoBehaviour
 
 		if (rb != null && other.CompareTag("Player"))
 		{
-			AudioManager.instance.PlayClangSound();
+			Feedback(other, col.contacts[0].point);
 			float mag = _rigidbody2D.velocity.magnitude;
 			_rigidbody2D.velocity = (transform.position - other.transform.position)
 			                        * rb.velocity.magnitude
@@ -61,5 +63,15 @@ public class PlayerCollision : MonoBehaviour
 			              * QGB.Power
 			              / opponentQGB.Resistance;
 		}
+	}
+
+	void Feedback(GameObject other, Vector3 toSpawn)
+	{
+		AudioManager.instance.PlayClangSound();
+		_particleSystem.transform.position = toSpawn;
+		// UnityEngine.ParticleSystem.ShapeModule editableShape = _particleSystem.shape;
+		// Vector3 newRotation = new Vector3(0, 0, Vector2.SignedAngle(Vector2.down, other.transform.position - transform.position) + 45);
+		// editableShape.rotation = newRotation;
+		_particleSystem.Play();
 	}
 }
