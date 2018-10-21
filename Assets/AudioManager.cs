@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 
 	public AudioClip bomb;
 	public AudioClip[] clangs;
+	public AudioClip[] bumperBings;
 
 	private AudioSource source;
 

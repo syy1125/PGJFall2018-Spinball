@@ -10,6 +10,8 @@ public class Explosive : MonoBehaviour {
     public float blastRadius = 1.0f;
     public LayerMask mask = -1;
 
+    public Animation explosion;
+
     void Update()
     {
         transform.Rotate(0, 0, Random.Range(-2, 2));
@@ -59,8 +61,9 @@ public class Explosive : MonoBehaviour {
 
             if (health == 0)
             {
-                Explosion();
-                Destroy(this.gameObject);
+                //Explosion();
+                explosion.Play();
+                //Destroy(this.gameObject, 0.1f);
             }
             else
             {
