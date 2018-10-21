@@ -11,17 +11,23 @@ public class Bumper : MonoBehaviour
 	public float timeBeforeDecay;
 	public float startingV;
 	public float vIncrement;
+	public float startingShadowScale;
+	public float shadowScaleIncrement;
 
 	private float currentBounceForce;
 	private SpriteRenderer _sprite;
 	private float lastChange;
 	private float vValue;
+	private float shadowScale;
+	private GameObject shadow;
 
 	void Start()
 	{
 		currentBounceForce = startingBounceForce;
 		lastChange = 0;
 		vValue = startingV;
+		shadowScale = startingShadowScale;
+		shadow = transform.GetChild(0).gameObject;
 		_sprite = GetComponent<SpriteRenderer>();
 	}
 
@@ -32,8 +38,10 @@ public class Bumper : MonoBehaviour
 			return;
 		}
 		currentBounceForce -= bounceIncrement;
-		_sprite.color = Color.HSVToRGB(0, 0, vValue - vIncrement);
 		vValue -= vIncrement;
+		_sprite.color = Color.HSVToRGB(0, 0, vValue);
+		shadowScale -= shadowScaleIncrement;
+			shadow.transform.localScale = new Vector3(shadowScale, shadowScale, 0);
 		lastChange = Time.time;
 		if(vValue == startingV)
 		{
@@ -52,9 +60,11 @@ public class Bumper : MonoBehaviour
 			rb.AddForce(currentBounceForce * (col.gameObject.transform.position - this.transform.position) );
 			currentBounceForce += bounceIncrement;
 			lastChange = Time.time;
-			Debug.Log(lastChange);
-			_sprite.color = Color.HSVToRGB(0, 0, vValue + vIncrement);
+			//Debug.Log(lastChange);
 			vValue += vIncrement;
+			_sprite.color = Color.HSVToRGB(0, 0, vValue);
+			shadowScale += shadowScaleIncrement;
+			shadow.transform.localScale = new Vector3(shadowScale, shadowScale, 0);
 		}
 	}
 }
