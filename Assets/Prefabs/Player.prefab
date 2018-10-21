@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fff2c08f7f709429226987896571d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 0.2
+  collisionDamping: 0
 --- !u!114 &114287988912508540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,7 +104,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RespawnDelay: 5
-  PlayerIndex: 0
+  DeathDisplay: {fileID: 0}
+  respawnCenter: {x: 0, y: 0, z: 0}
+  respawnDistance: 0
+  killDistance: 0
 --- !u!114 &114824534635328670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,9 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb02cdd768a3004ca46c296ec81ebda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputStrength: 3
+  BaseInputStrength: 1.5
   HorizontalAxisName: Horizontal
   VerticalAxisName: Vertical
+  MaxSpinsPerSecond: 0
+  QGB:
+    Name: 
+    PlayerOneSprite: {fileID: 0}
+    PlayerTwoSprite: {fileID: 0}
+    Power: 0
+    Resistance: 0
+    Acceleration: 0
 --- !u!212 &212102844960837040
 SpriteRenderer:
   m_ObjectHideFlags: 1
