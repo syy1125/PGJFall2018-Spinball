@@ -34,15 +34,14 @@ public class RandoBombs : MonoBehaviour {
             if (bombStopwatch > cooldown)
             {
                 bombStopwatch = 0;
-                float x = 0;
-                float y = 0;
-                while (Mathf.Abs(x) < radiusMinimum || Mathf.Abs(y) < radiusMinimum)
+
+                Vector2 placement = Random.insideUnitCircle;
+
+                while (Mathf.Abs(placement.x) < radiusMinimum && Mathf.Abs(placement.y) < radiusMinimum)
                 {
-                    x = Random.insideUnitCircle.x * radiusLimit;
-                    y = Random.insideUnitCircle.y * radiusLimit;
+                    placement = Random.insideUnitCircle;
                 }
-                //Vector2 placement = new Vector2(Random.insideUnitCircle.x * radiusLimit, Random.insideUnitCircle.y * radiusLimit);
-                Vector2 placement = new Vector2(x, y);
+                
                 GameObject bomb = (GameObject)Instantiate(bombPrefab, placement, Quaternion.identity);
             }
         }
