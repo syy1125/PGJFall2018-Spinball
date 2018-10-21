@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mime;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Permissions;
+using System.Globalization;
 using System.Text.RegularExpressions;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class QGBSelectorManager : MonoBehaviour
@@ -58,13 +51,17 @@ public class QGBSelectorManager : MonoBehaviour
 
 	public GameObject P1Preview;
 	public Text P1Name;
-	public Text P1Stats;
+	public Text P1PowerDisplay;
+	public Text P1ResistanceDisplay;
+	public Text P1AccelerationDisplay;
 	public GameObject P1ReadyArrow;
 	public GameObject P1UnreadyArrow;
 
 	public GameObject P2Preview;
 	public Text P2Name;
-	public Text P2Stats;
+	public Text P2PowerDisplay;
+	public Text P2ResistanceDisplay;
+	public Text P2AccelerationDisplay;
 	public GameObject P2ReadyArrow;
 	public GameObject P2UnreadyArrow;
 
@@ -165,26 +162,23 @@ public class QGBSelectorManager : MonoBehaviour
 		playerRenderer.transform.localScale *= RenderScale;
 	}
 
-	private string FormatStats(QuantumGyroBlade qgb)
-	{
-		return "Power: " + qgb.Power + "\n"
-		       + "Resistance: " + qgb.Resistance + "\n"
-		       + "Acceleration: " + qgb.Acceleration;
-	}
-
 	private void UpdateUI()
 	{
 		QuantumGyroBlade p1QGB = GyroBlades[_p1State.Index];
 		SetPreview(P1Preview.transform, p1QGB.P1RendererPrefab);
 		P1Name.text = p1QGB.Name;
-		P1Stats.text = FormatStats(p1QGB);
+		P1PowerDisplay.text = p1QGB.Power.ToString(CultureInfo.CurrentCulture);
+		P1ResistanceDisplay.text = p1QGB.Resistance.ToString(CultureInfo.CurrentCulture);
+		P1AccelerationDisplay.text = p1QGB.Acceleration.ToString(CultureInfo.CurrentCulture);
 		P1ReadyArrow.SetActive(!_p1State.Ready);
 		P1UnreadyArrow.SetActive(_p1State.Ready);
 
 		QuantumGyroBlade p2QGB = GyroBlades[_p2State.Index];
 		SetPreview(P2Preview.transform, p2QGB.P2RendererPrefab);
 		P2Name.text = p2QGB.Name;
-		P2Stats.text = FormatStats(p2QGB);
+		P2PowerDisplay.text = p2QGB.Power.ToString(CultureInfo.CurrentCulture);
+		P2ResistanceDisplay.text = p2QGB.Resistance.ToString(CultureInfo.CurrentCulture);
+		P2AccelerationDisplay.text = p2QGB.Acceleration.ToString(CultureInfo.CurrentCulture);
 		P2ReadyArrow.SetActive(!_p2State.Ready);
 		P2UnreadyArrow.SetActive(_p2State.Ready);
 	}
