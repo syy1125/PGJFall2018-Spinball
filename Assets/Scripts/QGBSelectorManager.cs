@@ -36,7 +36,10 @@ public class QGBSelectorManager : MonoBehaviour
 	public QuantumGyroBlade Chonnole;
 
 	public InputField PasswordInput;
-	public NotificationManager Notifications;
+	public Text UnlockQGBText;
+	public float UnlockNotifyResetTime = 4;
+	private string _baseUnlockText;
+	private Coroutine _unlockNotification;
 
 	public string P1HorizontalAxisName;
 	public string P1VerticalAxisName;
@@ -48,8 +51,7 @@ public class QGBSelectorManager : MonoBehaviour
 	public float ReadyBuildupTime = 1;
 	public int CountdownLength = 5;
 
-	[FormerlySerializedAs("CountdownTimerDisplay")]
-	public Text CountdownDisplay;
+	public GameObject CountdownDisplay;
 
 	private String _countdownBaseText;
 	private bool _inCountdown;
@@ -93,7 +95,9 @@ public class QGBSelectorManager : MonoBehaviour
 	{
 		_p1State = new PlayerSelectionState();
 		_p2State = new PlayerSelectionState();
-		_countdownBaseText = CountdownDisplay.text;
+		_baseUnlockText = UnlockQGBText.text;
+		_countdownBaseText = CountdownDisplay.GetComponentInChildren<Text>().text;
+		CountdownDisplay.SetActive(false);
 		_inCountdown = false;
 
 		UpdateUI();
@@ -205,7 +209,7 @@ public class QGBSelectorManager : MonoBehaviour
 	private IEnumerator CountdownSequence()
 	{
 		_inCountdown = true;
-		CountdownDisplay.gameObject.SetActive(true);
+		CountdownDisplay.SetActive(true);
 
 		float startTime = Time.time;
 
@@ -213,15 +217,13 @@ public class QGBSelectorManager : MonoBehaviour
 		{
 			if (!_p1State.Ready || !_p2State.Ready)
 			{
-				CountdownDisplay.text = _countdownBaseText;
+				CountdownDisplay.GetComponentInChildren<Text>().text = _countdownBaseText;
 				CountdownDisplay.gameObject.SetActive(false);
 				_inCountdown = false;
 				yield break;
 			}
 
-			CountdownDisplay.text =
-				_countdownBaseText + "\n" +
-				Mathf.CeilToInt(startTime + CountdownLength - Time.time);
+			CountdownDisplay.GetComponentInChildren<Text>().text = _countdownBaseText + Mathf.CeilToInt(startTime + CountdownLength - Time.time);
 
 			yield return new WaitForEndOfFrame();
 		}
@@ -254,8 +256,6 @@ public class QGBSelectorManager : MonoBehaviour
 
 	private void UnlockQGB(QuantumGyroBlade toUnlock)
 	{
-		Notifications.DisplayNotification("Unlocked QGB: " + toUnlock.Name);
-
 		QuantumGyroBlade[] newGyroBlades = new QuantumGyroBlade[GyroBlades.Length + 1];
 
 		for (int i = 0; i < GyroBlades.Length; i++)
@@ -265,5 +265,22 @@ public class QGBSelectorManager : MonoBehaviour
 
 		newGyroBlades[GyroBlades.Length] = toUnlock;
 		GyroBlades = newGyroBlades;
+
+		if (_unlockNotification != null)
+		{
+			StopCoroutine(_unlockNotification);
+		}
+
+		_unlockNotification = StartCoroutine(NotifyUnlock(toUnlock.Name));
+	}
+
+	private IEnumerator NotifyUnlock(string qgbName)
+	{
+		UnlockQGBText.text = "Unlocked: " + qgbName;
+
+		yield return new WaitForSeconds(UnlockNotifyResetTime);
+
+		UnlockQGBText.text = _baseUnlockText;
+		_unlockNotification = null;
 	}
 }
