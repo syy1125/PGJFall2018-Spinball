@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class QGBSelectorManager : MonoBehaviour
@@ -25,7 +26,7 @@ public class QGBSelectorManager : MonoBehaviour
 		}
 	}
 
-	public Sprite Fallback;
+	[FormerlySerializedAs("Fallback")] public Sprite FallbackSprite;
 	public QuantumGyroBlade[] GyroBlades;
 	public QuantumGyroBlade Chonnole;
 	public InputField PasswordInput;
@@ -127,20 +128,28 @@ public class QGBSelectorManager : MonoBehaviour
 		       + "Acceleration: " + qgb.Acceleration;
 	}
 
+	private Sprite GetSprite(GameObject prefab)
+	{
+		SpriteRenderer playerSpriteRenderer = prefab.GetComponent<SpriteRenderer>();
+
+		if (playerSpriteRenderer != null && playerSpriteRenderer.sprite != null)
+		{
+			return playerSpriteRenderer.sprite;
+		}
+
+		return FallbackSprite;
+	}
+
 	private void UpdateUI()
 	{
 		QuantumGyroBlade p1QGB = GyroBlades[_p1State.Index];
-		P1Image.sprite = p1QGB.PlayerOneSprite == null
-			? Fallback
-			: p1QGB.PlayerOneSprite;
+		P1Image.sprite = GetSprite(p1QGB.P1RendererPrefab);
 		P1Name.text = p1QGB.Name;
 		P1Stats.text = FormatStats(p1QGB);
 		P1Background.color = _p1State.Ready ? Color.green : Color.white;
 
 		QuantumGyroBlade p2QGB = GyroBlades[_p2State.Index];
-		P2Image.sprite = p2QGB.PlayerTwoSprite == null
-			? Fallback
-			: p2QGB.PlayerTwoSprite;
+		P2Image.sprite = GetSprite(p2QGB.P2RendererPrefab);
 		P2Name.text = p2QGB.Name;
 		P2Stats.text = FormatStats(p2QGB);
 		P2Background.color = _p2State.Ready ? Color.green : Color.white;

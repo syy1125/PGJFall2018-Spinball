@@ -9,28 +9,14 @@ public class MovementController : MonoBehaviour
 
 	public string HorizontalAxisName;
 	public string VerticalAxisName;
-	public float MaxSpinsPerSecond;
 	public QuantumGyroBlade QGB;
-	public Sprite QGBSprite;
 
 	private Rigidbody2D _rigidbody2D;
-	private GameObject _sprite;
 
 	private void Start()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
 		_rigidbody2D.mass *= QGB.Resistance;
-		_sprite = transform.GetChild(0).gameObject;
-		_sprite.GetComponent<SpriteRenderer>().sprite = QGBSprite;
-	}
-
-	void Update()
-	{
-		_sprite.transform.Rotate(
-			0,
-			0,
-			Mathf.Min(_rigidbody2D.velocity.magnitude * 0.5f, MaxSpinsPerSecond) * Time.deltaTime * 360
-		);
 	}
 
 	void FixedUpdate()

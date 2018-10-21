@@ -19,14 +19,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4410963323707978}
-  - component: {fileID: 212102844960837040}
   - component: {fileID: 50050320808952666}
   - component: {fileID: 58943691924586440}
   - component: {fileID: 114824534635328670}
+  - component: {fileID: 114876553548703644}
   - component: {fileID: 114133838626953850}
   - component: {fileID: 114287988912508540}
   m_Layer: 0
-  m_Name: Player
+  m_Name: P1Base
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fff2c08f7f709429226987896571d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionDamping: 0
+  CollisionDamping: 0.3
+  QGB:
+    Name: Unknown
+    P1RendererPrefab: {fileID: 0}
+    P2RendererPrefab: {fileID: 0}
+    Power: 1
+    Resistance: 1
+    Acceleration: 1
 --- !u!114 &114287988912508540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,60 +126,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb02cdd768a3004ca46c296ec81ebda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseInputStrength: 1.5
-  HorizontalAxisName: Horizontal
-  VerticalAxisName: Vertical
-  MaxSpinsPerSecond: 0
+  BaseInputStrength: 15
+  HorizontalAxisName: HorizontalPlayerOne
+  VerticalAxisName: VerticalPlayerOne
   QGB:
     Name: 
-    PlayerOneSprite: {fileID: 0}
-    PlayerTwoSprite: {fileID: 0}
-    Power: 0
-    Resistance: 0
-    Acceleration: 0
---- !u!212 &212102844960837040
-SpriteRenderer:
+    P1RendererPrefab: {fileID: 0}
+    P2RendererPrefab: {fileID: 0}
+    Power: 1
+    Resistance: 1
+    Acceleration: 1
+--- !u!114 &114876553548703644
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805007835537972}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 90
-  m_Sprite: {fileID: 21300000, guid: 83d79aa12d58ce24a981d5d0e4f9962c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad7cd0d14205a49ad55664d32b2e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxSpinsPerSecond: 4
+  RendererPrefab: {fileID: 0}

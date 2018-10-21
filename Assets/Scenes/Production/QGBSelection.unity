@@ -806,12 +806,12 @@ MonoBehaviour:
     Acceleration: 2
   - Name: Arrows
     PlayerOneSprite: {fileID: 21300000, guid: 6c667d681976e274d91f283e5996d486, type: 3}
-    PlayerTwoSprite: {fileID: 0}
+    PlayerTwoSprite: {fileID: 21300000, guid: b4a0157330954b44b87e6b4858fe08bf, type: 3}
     Power: 2
     Resistance: 1
     Acceleration: 3
   - Name: Shockwave
-    PlayerOneSprite: {fileID: 0}
+    PlayerOneSprite: {fileID: 21300000, guid: 3624b7714704f3b40a24e3bbb9f04cee, type: 3}
     PlayerTwoSprite: {fileID: 21300000, guid: c60b9ba91633586469d3418601f1d1d7, type: 3}
     Power: 3
     Resistance: 1
