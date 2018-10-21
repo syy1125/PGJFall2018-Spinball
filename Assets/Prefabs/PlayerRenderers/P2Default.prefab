@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212640771808649608}
   m_Layer: 0
   m_Name: P2Default
-  m_TagString: Untagged
+  m_TagString: PlayerRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

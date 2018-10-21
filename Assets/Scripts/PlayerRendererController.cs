@@ -13,18 +13,19 @@ public class PlayerRendererController : MonoBehaviour
 	private void Start()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
-		
-		if (transform.childCount > 0)
+
+		foreach (Transform child in transform)
 		{
-			_renderer = transform.GetChild(0).gameObject;
+			if (!child.CompareTag("PlayerRenderer")) continue;
+			
+			_renderer = child.gameObject;
+			return;
 		}
-		else
-		{
-			_renderer = Instantiate(
-				RendererPrefab,
-				transform
-			);
-		}
+
+		_renderer = Instantiate(
+			RendererPrefab,
+			transform
+		);
 	}
 
 	private void Update()
