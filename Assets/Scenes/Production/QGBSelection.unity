@@ -2828,7 +2828,7 @@ MonoBehaviour:
     Power: 3
     Resistance: 1
     Acceleration: 2
-  - Name: Hamster
+  - Name: Spinny Pig
     P1RendererPrefab: {fileID: 1382542811452768, guid: 2838a232785ecfb438bd80daf402345a,
       type: 2}
     P2RendererPrefab: {fileID: 1933076249848358, guid: 3394b8b6b98164d41801dc968bca56e5,

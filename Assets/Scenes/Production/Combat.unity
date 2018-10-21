@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb02cdd768a3004ca46c296ec81ebda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseInputStrength: 30
+  BaseInputStrength: 10
   HorizontalAxisName: HorizontalPlayerTwo
   VerticalAxisName: VerticalPlayerTwo
   QGB:
@@ -7455,12 +7455,12 @@ Prefab:
     - target: {fileID: 114824534635328670, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
       propertyPath: BaseInputStrength
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114133838626953850, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
       propertyPath: CollisionDamping
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 114824534635328670, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
