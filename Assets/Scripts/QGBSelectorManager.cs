@@ -253,6 +253,10 @@ public class QGBSelectorManager : MonoBehaviour
 			GameStateManager.Instance.ChonnoleUnlocked = true;
 			UnlockQGB(Chonnole);
 		}
+		if(pass.Equals("omega"))
+		{
+			GameStateManager.Instance.GoToOmega(GyroBlades[0], GyroBlades[0]);
+		}
 
 		PasswordInput.text = "";
 	}

@@ -51,6 +51,25 @@ public class GameStateManager : MonoBehaviour
 		StartCoroutine(LoadCombatSceneSequence(p1QGB, p2QGB));
 	}
 
+	private IEnumerator LoadOmegaSceneSequence(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB)
+	{
+		AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync("Omega");
+
+		while (!loadSceneOperation.isDone) yield return null;
+
+		GameObject p1 = GameObject.Find("PlayerOne");
+		p1.GetComponent<MovementController>().QGB = p1QGB;
+		p1.GetComponent<PlayerRendererController>().SetRendererPrefab(p1QGB.P1RendererPrefab);
+		GameObject p2 = GameObject.Find("PlayerTwo");
+		p2.GetComponent<MovementController>().QGB = p2QGB;
+		p2.GetComponent<PlayerRendererController>().SetRendererPrefab(p2QGB.P2RendererPrefab);
+	}
+
+	public void GoToOmega(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB)
+	{
+		StartCoroutine(LoadOmegaSceneSequence(p1QGB, p2QGB));
+	}
+
 	public void EndGame(Sprite winner)
 	{
 		StartCoroutine((LoadEndScreen(winner)));
