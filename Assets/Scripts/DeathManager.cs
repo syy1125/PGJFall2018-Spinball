@@ -77,4 +77,9 @@ public class DeathManager : MonoBehaviour
 		// Start coroutine on an active object - since RespawnSequence deactivates this object the rest of the coroutine would've halted.
 		GameStateManager.Instance.StartCoroutine(RespawnSequence());
 	}
+
+	public int getDeaths()
+	{
+		return _deaths;
+	}
 }
