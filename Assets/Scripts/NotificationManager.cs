@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class NotificationManager : MonoBehaviour
@@ -10,6 +8,7 @@ public class NotificationManager : MonoBehaviour
 	public float PersistentTime = 4;
 	public float FadeTime = 1;
 	public float Displacement;
+	public float LerpStrength = 0.8f;
 
 	// Testing code
 //	private IEnumerator Start()
@@ -50,17 +49,26 @@ public class NotificationManager : MonoBehaviour
 
 			yield return new WaitForEndOfFrame();
 		}
-		
+
 		Destroy(notification);
 	}
 
 	public void DisplayNotification(string message)
 	{
-		foreach (Transform child in transform)
-		{
-			child.localPosition += Vector3.down * Displacement;
-		}
-
 		StartCoroutine(NotificationLifecycle(message));
+	}
+
+	private void Update()
+	{
+		for (int childIndex = 0; childIndex < transform.childCount; childIndex++)
+		{
+			Vector3 currentPosition = transform.GetChild(childIndex).localPosition;
+
+			transform.GetChild(childIndex).localPosition = Vector3.Lerp(
+				currentPosition,
+				Vector3.down * (transform.childCount - childIndex - 1) * Displacement,
+				LerpStrength * Time.deltaTime
+			);
+		}
 	}
 }

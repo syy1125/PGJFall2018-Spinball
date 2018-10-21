@@ -1416,6 +1416,7 @@ MonoBehaviour:
   PersistentTime: 2
   FadeTime: 1
   Displacement: 15
+  LerpStrength: 5
 --- !u!1 &2045428505
 GameObject:
   m_ObjectHideFlags: 0
