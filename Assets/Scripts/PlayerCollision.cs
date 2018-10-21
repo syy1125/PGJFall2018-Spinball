@@ -8,8 +8,6 @@ public class PlayerCollision : MonoBehaviour
 	[FormerlySerializedAs("collisionDamping")]
 	public float CollisionDamping;
 
-	public QuantumGyroBlade QGB;
-
 	private Rigidbody2D _rigidbody2D;
 	private ParticleSystem _particleSystem;
 
@@ -26,6 +24,7 @@ public class PlayerCollision : MonoBehaviour
 		
 		if (rb != null && other.CompareTag("Player"))
 		{
+			QuantumGyroBlade selfQGB = GetComponent<MovementController>().QGB;
 			QuantumGyroBlade opponentQGB = other.GetComponent<MovementController>().QGB;
 			Feedback(other, col.contacts[0].point, _rigidbody2D.velocity.magnitude + rb.velocity.magnitude);
 			float mag = _rigidbody2D.velocity.magnitude;
@@ -33,11 +32,11 @@ public class PlayerCollision : MonoBehaviour
 			                        * rb.velocity.magnitude
 			                        * CollisionDamping
 			                        * opponentQGB.Power
-			                        / QGB.Resistance;
+			                        / selfQGB.Resistance;
 			rb.velocity = (other.transform.position - transform.position)
 			              * mag
 			              * CollisionDamping
-			              * QGB.Power
+			              * selfQGB.Power
 			              / opponentQGB.Resistance;
 		}
 	}
@@ -49,6 +48,7 @@ public class PlayerCollision : MonoBehaviour
 
 		if (rb != null && other.CompareTag("Player"))
 		{
+			QuantumGyroBlade selfQGB = GetComponent<MovementController>().QGB;
 			QuantumGyroBlade opponentQGB = other.GetComponent<MovementController>().QGB;
 			AudioManager.instance.PlayClangSound();
 			float mag = _rigidbody2D.velocity.magnitude;
@@ -56,11 +56,11 @@ public class PlayerCollision : MonoBehaviour
 			                        * rb.velocity.magnitude
 			                        * CollisionDamping
 			                        * opponentQGB.Power
-			                        / QGB.Resistance;
+			                        / selfQGB.Resistance;
 			rb.velocity = (other.transform.position - transform.position)
 			              * mag
 			              * CollisionDamping
-			              * QGB.Power
+			              * selfQGB.Power
 			              / opponentQGB.Resistance;
 		}
 	}
