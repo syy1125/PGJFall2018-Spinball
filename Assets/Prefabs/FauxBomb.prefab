@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4570074324897492}
   - component: {fileID: 212488206026204386}
+  - component: {fileID: 114032238168994766}
   m_Layer: 0
   m_Name: FauxBomb
   m_TagString: Untagged
@@ -40,6 +41,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114032238168994766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1847345346816112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0aac5859eff4843bf26c274abf1984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  blastForce: 300
+  bounceForce: 0
+  blastRadius: 2
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!212 &212488206026204386
 SpriteRenderer:
   m_ObjectHideFlags: 1

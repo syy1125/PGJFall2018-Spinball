@@ -21,6 +21,7 @@ public class Explosive : MonoBehaviour {
         {
             for (int i = 0; i < hitByBlast; ++i)
             {
+                Debug.Log(results[i].gameObject);
                 Rigidbody2D rb = results[i].GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
@@ -33,9 +34,9 @@ public class Explosive : MonoBehaviour {
         }
     }
 
-    private void Bounce(Collider2D collision)
+    private void Bounce(Collision2D collision)
     {
-        Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
+        Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
 
         if (rb != null)
         {
@@ -44,10 +45,10 @@ public class Explosive : MonoBehaviour {
         }
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             --health;
 
