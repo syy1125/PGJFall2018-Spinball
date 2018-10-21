@@ -10,6 +10,10 @@ public class DeathManager : MonoBehaviour
 	public float respawnDistance;
 	public float killDistance;
 
+	public GameObject[] pips;
+	public Sprite emptyPips;
+	public Sprite fullPips;
+
 	private int _deaths;
 
 	private void Start()
@@ -32,7 +36,11 @@ public class DeathManager : MonoBehaviour
 
 	private void UpdateDeathDisplay()
 	{
-		DeathDisplay.text = _deaths.ToString();
+		//DeathDisplay.text = _deaths.ToString();
+		for(int x = 0; x < _deaths; ++x)
+		{
+			pips[x].GetComponent<Image>().sprite = fullPips;
+		}
 	}
 
 	private IEnumerator RespawnSequence()
