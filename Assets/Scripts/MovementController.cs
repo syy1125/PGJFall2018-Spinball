@@ -16,7 +16,13 @@ public class MovementController : MonoBehaviour
 	private void Start()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
-		_rigidbody2D.mass *= QGB.Resistance;
+		_rigidbody2D.mass = QGB.Resistance;
+	}
+
+	public void SetQGB(QuantumGyroBlade qgb)
+	{
+		QGB = qgb;
+		_rigidbody2D.mass = qgb.Resistance;
 	}
 
 	void FixedUpdate()
