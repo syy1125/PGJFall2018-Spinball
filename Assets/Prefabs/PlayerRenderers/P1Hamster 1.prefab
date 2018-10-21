@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212339581945225972}
   - component: {fileID: 95620609692756280}
   m_Layer: 0
-  m_Name: P1Hamster
+  m_Name: P1Hamster 1
   m_TagString: PlayerRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
