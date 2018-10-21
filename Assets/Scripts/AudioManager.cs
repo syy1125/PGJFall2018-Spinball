@@ -20,18 +20,25 @@ public class AudioManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 		instance = this;
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 
-		source = GetComponent<AudioSource>();
+		VerifySource();
+	}
+
+	private void VerifySource()
+	{
+		source = gameObject.GetComponent<AudioSource>();
 	}
 
 	public void PlayBombSound()
 	{
+		VerifySource();
 		source.PlayOneShot(bombs[Random.Range(0, bombs.Length)], 1f);
 	}
 
 	public void PlayClangSound()
 	{
+		VerifySource();
 		StartCoroutine(PlayOneShotClang());
 	}
 
@@ -50,6 +57,7 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayBingSound(int index)
 	{
+		VerifySource();
 		//Debug.Log("1:" + index);
 		index = Mathf.Min(bumperBings.Length - 1, index);
 		//Debug.Log("2:" + index);
@@ -58,6 +66,7 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayDeathSound()
 	{
+		VerifySource();
 		source.PlayOneShot(deathSound);
 	}
 }

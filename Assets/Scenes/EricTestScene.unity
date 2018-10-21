@@ -1191,7 +1191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpinsPerSecond: 4
-  RendererPrefab: {fileID: 1484789797668910, guid: 43d7500074ab8234385758f86e89ed1a,
+  RendererPrefab: {fileID: 1182944181593542, guid: 6711f9914b65f6d48913b75ea8829ecd,
     type: 2}
 --- !u!4 &1012069604
 Transform:
@@ -1220,7 +1220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RespawnDelay: 2
-  DeathDisplay: {fileID: 0}
   respawnCenter: {x: 0, y: 0, z: 0}
   respawnDistance: 15
   killDistance: 34
@@ -1234,6 +1233,8 @@ MonoBehaviour:
   - {fileID: 377121050}
   emptyPips: {fileID: 21300000, guid: 3e6eea02c8b081a46a43e53b529f62bc, type: 3}
   fullPips: {fileID: 21300000, guid: 2357bc298c832904b8582034c4d60203, type: 3}
+  playerDeathPrefab: {fileID: 1986754744700020, guid: 62c3158a80b0b1b41a435feb8f31a925,
+    type: 2}
 --- !u!1 &1025173285
 GameObject:
   m_ObjectHideFlags: 0
@@ -7463,7 +7464,7 @@ Prefab:
         type: 2}
       propertyPath: RendererPrefab
       value: 
-      objectReference: {fileID: 1516162714561376, guid: 035e06cfc2a893542a3258fd3cbb2b0b,
+      objectReference: {fileID: 1588949077095058, guid: 00f908556c3f4294ca30ebd1910f424a,
         type: 2}
     - target: {fileID: 114287988912508540, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
@@ -7512,6 +7513,12 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 2357bc298c832904b8582034c4d60203,
         type: 3}
+    - target: {fileID: 114287988912508540, guid: eaa0f3543c80e24459f78a260acb534a,
+        type: 2}
+      propertyPath: playerDeathPrefab
+      value: 
+      objectReference: {fileID: 1986754744700020, guid: 62c3158a80b0b1b41a435feb8f31a925,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 212102844960837040, guid: eaa0f3543c80e24459f78a260acb534a, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: eaa0f3543c80e24459f78a260acb534a, type: 2}

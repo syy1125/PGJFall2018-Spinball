@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 4041341f36a44cd4b806d44f5c2efa49
+guid: ce84a11b5a2079f48806305a8fbcc7c3
 TextureImporter:
   fileIDToRecycleName:
-    21300000: hamster_animation_0
-    21300002: hamster_animation_1
+    21300000: hamster_blue_animation_0
+    21300002: hamster_blue_animation_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -86,7 +86,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hamster_animation_0
+      name: hamster_blue_animation_0
       rect:
         serializedVersion: 2
         x: 0
@@ -100,13 +100,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4630161fe32a8b54483c90b30f0cb4fb
+      spriteID: 662c8f98a16c47b4d83b91d8011f1823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hamster_animation_1
+      name: hamster_blue_animation_1
       rect:
         serializedVersion: 2
         x: 0
@@ -120,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46e3c1f357e2e3d409775d88029dbbb6
+      spriteID: 430dd34f5bb0dc3408af979f3f7d8f98
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5d90d1392755b73498daabc239b3b147
+    spriteID: 85a1f168e7880f246adc4ec3d6150093
     vertices: []
     indices: 
     edges: []

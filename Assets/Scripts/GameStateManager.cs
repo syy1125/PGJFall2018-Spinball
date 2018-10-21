@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
@@ -48,5 +49,20 @@ public class GameStateManager : MonoBehaviour
 	public void GoToCombat(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB)
 	{
 		StartCoroutine(LoadCombatSceneSequence(p1QGB, p2QGB));
+	}
+
+	public void EndGame(Sprite winner)
+	{
+		StartCoroutine((LoadEndScreen(winner)));
+	}
+
+	private IEnumerator LoadEndScreen(Sprite winner)
+	{
+		AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync("EndScreen");
+
+		while (!loadSceneOperation.isDone) yield return null;
+
+		GameObject info = GameObject.Find("Winner");
+		info.GetComponent<Image>().sprite = winner;
 	}
 }

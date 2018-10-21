@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Production/Combat.unity
     guid: b8b690d58b97c514ba5dc759f998fd9c
+  - enabled: 1
+    path: Assets/Scenes/Production/EndScreen.unity
+    guid: a1a28d89a973c9c4795df467f53108c0
   m_configObjects: {}

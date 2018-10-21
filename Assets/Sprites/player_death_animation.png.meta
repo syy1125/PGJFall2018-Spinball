@@ -1,9 +1,13 @@
 fileFormatVersion: 2
-guid: 4041341f36a44cd4b806d44f5c2efa49
+guid: 24d03677686325d4c830277689b2f3b5
 TextureImporter:
   fileIDToRecycleName:
-    21300000: hamster_animation_0
-    21300002: hamster_animation_1
+    21300000: player_death_animation_0
+    21300002: player_death_animation_1
+    21300004: player_death_animation_2
+    21300006: player_death_animation_3
+    21300008: player_death_animation_4
+    21300010: player_death_animation_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -47,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -86,7 +90,87 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hamster_animation_0
+      name: player_death_animation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb8204bcdab1154cb7bcfdf7e40627b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_death_animation_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 321ca7528c390f8418be0e917aa93b76
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_death_animation_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88997f37e84c6654c9d9d9b0df94b53c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_death_animation_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e2dbdde06a5ac141a7167ca302b151d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_death_animation_4
       rect:
         serializedVersion: 2
         x: 0
@@ -100,13 +184,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4630161fe32a8b54483c90b30f0cb4fb
+      spriteID: 2471baf3406fccd458686b9a6a1e157e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hamster_animation_1
+      name: player_death_animation_5
       rect:
         serializedVersion: 2
         x: 0
@@ -120,7 +204,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46e3c1f357e2e3d409775d88029dbbb6
+      spriteID: e0d9e999cf8786646ba89b134988c145
       vertices: []
       indices: 
       edges: []
@@ -128,7 +212,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5d90d1392755b73498daabc239b3b147
+    spriteID: c29862c80b8d0a9449c0e625c7571dd3
     vertices: []
     indices: 
     edges: []

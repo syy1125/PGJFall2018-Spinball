@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1261,7 +1261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RespawnDelay: 2
-  DeathDisplay: {fileID: 0}
   respawnCenter: {x: 0, y: 0, z: 0}
   respawnDistance: 15
   killDistance: 34
@@ -1275,6 +1274,8 @@ MonoBehaviour:
   - {fileID: 377121050}
   emptyPips: {fileID: 21300000, guid: 3e6eea02c8b081a46a43e53b529f62bc, type: 3}
   fullPips: {fileID: 21300000, guid: 2357bc298c832904b8582034c4d60203, type: 3}
+  playerDeathPrefab: {fileID: 1986754744700020, guid: 62c3158a80b0b1b41a435feb8f31a925,
+    type: 2}
 --- !u!1 &1025173285
 GameObject:
   m_ObjectHideFlags: 0
@@ -7540,6 +7541,12 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 2357bc298c832904b8582034c4d60203,
         type: 3}
+    - target: {fileID: 114287988912508540, guid: eaa0f3543c80e24459f78a260acb534a,
+        type: 2}
+      propertyPath: playerDeathPrefab
+      value: 
+      objectReference: {fileID: 1986754744700020, guid: 62c3158a80b0b1b41a435feb8f31a925,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 212102844960837040, guid: eaa0f3543c80e24459f78a260acb534a, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: eaa0f3543c80e24459f78a260acb534a, type: 2}
