@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Production/QGBSelection.unity
     guid: 898906aeebe01dc4d92e36805cb6d106
+  - enabled: 1
+    path: Assets/Scenes/Production/Combat.unity
+    guid: b8b690d58b97c514ba5dc759f998fd9c
   m_configObjects: {}

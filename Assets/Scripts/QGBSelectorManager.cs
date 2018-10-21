@@ -225,6 +225,8 @@ public class QGBSelectorManager : MonoBehaviour
 
 			yield return new WaitForEndOfFrame();
 		}
+		
+		GameStateManager.Instance.GoToCombat(GyroBlades[_p1State.Index], GyroBlades[_p2State.Index]);
 	}
 
 	private void Update()

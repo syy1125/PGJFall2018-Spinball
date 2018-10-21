@@ -17,13 +17,23 @@ public class PlayerRendererController : MonoBehaviour
 		foreach (Transform child in transform)
 		{
 			if (!child.CompareTag("PlayerRenderer")) continue;
-			
+
 			_renderer = child.gameObject;
 			return;
 		}
 
 		_renderer = Instantiate(
 			RendererPrefab,
+			transform
+		);
+	}
+
+	public void SetRendererPrefab(GameObject prefab)
+	{
+		RendererPrefab = prefab;
+		Destroy(_renderer);
+		_renderer = Instantiate(
+			prefab,
 			transform
 		);
 	}

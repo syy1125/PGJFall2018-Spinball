@@ -2634,11 +2634,11 @@ MonoBehaviour:
     Power: 3
     Resistance: 1
     Acceleration: 2
-  - Name: Ubisoft
+  - Name: Hamster
     P1RendererPrefab: {fileID: 0}
     P2RendererPrefab: {fileID: 0}
-    Power: 3
-    Resistance: 1
+    Power: 1
+    Resistance: 2
     Acceleration: 3
   Chonnole:
     Name: Chonnole
