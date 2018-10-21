@@ -52,5 +52,10 @@ public class TextSpiralController : MonoBehaviour
 	{
 		transform.localScale *= Mathf.Pow(_scaleSpeed, Time.deltaTime);
 		transform.Rotate(Vector3.forward * AngularSpeed * Time.deltaTime * RAD);
+
+		if (Input.anyKeyDown)
+		{
+			GameStateManager.Instance.GoToCharacterSelection();
+		}
 	}
 }

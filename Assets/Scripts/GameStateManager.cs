@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class GameStateManager : MonoBehaviour
 		else
 		{
 			Instance = this;
+			DontDestroyOnLoad(gameObject);
 		}
+	}
+
+	public void GoToCharacterSelection()
+	{
+		SceneManager.LoadScene("QGBSelection");
 	}
 }

@@ -19,6 +19,7 @@ public class MovementController : MonoBehaviour
 	private void Start()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
+		_rigidbody2D.mass *= QGB.Resistance;
 		_sprite = transform.GetChild(0).gameObject;
 		_sprite.GetComponent<SpriteRenderer>().sprite = QGBSprite;
 	}
@@ -36,7 +37,12 @@ public class MovementController : MonoBehaviour
 	{
 		float horiz = Input.GetAxis(HorizontalAxisName);
 		float vert = Input.GetAxis(VerticalAxisName);
-		Vector2 movementForce = new Vector2(horiz, vert).normalized * BaseInputStrength * QGB.Acceleration;
+		
+		// We multiply by Resistance here to counteract the effect of mass multiplier
+		Vector2 movementForce =new Vector2(horiz, vert).normalized 
+		                       * BaseInputStrength 
+		                       * QGB.Resistance 
+		                       * QGB.Acceleration;
 		float degrees = Vector2.Angle(_rigidbody2D.velocity, movementForce);
 		if (150 > degrees)
 		{
