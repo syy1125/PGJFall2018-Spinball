@@ -6,8 +6,10 @@ public class AudioManager : MonoBehaviour
 {
 	public static AudioManager instance;
 
-	private AudioSource music;
-	private AudioSource effects;
+	public AudioClip bomb;
+	public AudioClip[] clangs;
+
+	private AudioSource source;
 
 	void Start () 
 	{
@@ -15,9 +17,19 @@ public class AudioManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-		instance = null;
+		instance = this;
 		DontDestroyOnLoad(gameObject);
 
-		music.Play();
+		source = GetComponent<AudioSource>();
+	}
+
+	public void PlayBombSound()
+	{
+		source.PlayOneShot(bomb, 1f);
+	}
+
+	public void PlayClangSound()
+	{
+		source.PlayOneShot(clangs[Random.Range(0, clangs.Length)]);
 	}
 }

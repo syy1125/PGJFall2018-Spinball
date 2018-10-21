@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212501434331225322}
   - component: {fileID: 58048276708638928}
   - component: {fileID: 114725512658636966}
-  - component: {fileID: 114516677023432122}
   - component: {fileID: 114967339677860710}
   m_Layer: 0
   m_Name: InnerBomb
@@ -59,21 +58,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &114516677023432122
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388608161484844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31eeb943a5a36d04f94b7fa829e981b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdown: 0
-  rampModifier: 1
-  rotationalSpeed: 1
-  maxSpeed: 60
 --- !u!114 &114725512658636966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,7 +87,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31465da2e3692de4d85dec610b825cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: {fileID: 0}
 --- !u!212 &212501434331225322
 SpriteRenderer:
   m_ObjectHideFlags: 1
