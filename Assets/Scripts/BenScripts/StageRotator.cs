@@ -19,9 +19,12 @@ public class StageRotator : MonoBehaviour {
     private void Awake()
     {
         if (Instance != null)
+        {
             Destroy(gameObject);
+            Debug.Log("StageRotator Error: Instance of StageRotator already exists. Deleting this gameObject.");
+        }
         else
-            Instance = this;
+            Instance = this.GetComponent<StageRotator>();
     }
 
     private void Start()
@@ -36,7 +39,7 @@ public class StageRotator : MonoBehaviour {
         if (stopwatch >= countdown)
         {
             transform.Rotate(0, 0, Time.deltaTime * rotationalSpeed, Space.World);
-            if (rotationalSpeed < maxSpeed)
+            if (Mathf.Abs(rotationalSpeed) < Mathf.Abs(maxSpeed))
                 rotationalSpeed += Time.deltaTime * rampModifier;
         }
     }

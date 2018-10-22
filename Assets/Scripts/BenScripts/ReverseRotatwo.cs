@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotatwo : MonoBehaviour {
+public class ReverseRotatwo : MonoBehaviour {
+
+    public bool reversal;
 
     private static StageRotator stage;
     private float rotationalSpeed;
@@ -18,7 +20,11 @@ public class Rotatwo : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        rotationalSpeed = stage.rotationalSpeed;
-        transform.RotateAround(Vector3.zero, Vector3.forward, rotationalSpeed * Time.deltaTime);   
+        if (reversal == true)
+            rotationalSpeed = stage.rotationalSpeed * -1;
+        else
+            rotationalSpeed = stage.rotationalSpeed;
+
+        transform.RotateAround(Vector3.zero, Vector3.forward, rotationalSpeed * Time.deltaTime);
     }
 }
