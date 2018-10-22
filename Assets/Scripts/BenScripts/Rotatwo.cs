@@ -7,7 +7,7 @@ public class Rotatwo : MonoBehaviour {
     private static StageRotator stage;
     private float rotationalSpeed;
 
-    private void Awake()
+    private void Start()
     {
         stage = StageRotator.Instance;
 
