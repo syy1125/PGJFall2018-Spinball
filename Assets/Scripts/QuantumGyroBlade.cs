@@ -10,4 +10,5 @@ public class QuantumGyroBlade
 	public float Power = 1;
 	public float Resistance = 1;
 	public float Acceleration = 1;
+    public string Ability;
 }

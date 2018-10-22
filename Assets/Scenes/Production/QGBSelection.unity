@@ -2812,6 +2812,7 @@ MonoBehaviour:
     Power: 2
     Resistance: 2
     Acceleration: 2
+    Ability: TeleportProximity
   - Name: Arrows
     P1RendererPrefab: {fileID: 1134215107169180, guid: b505edd723aa43a49b22715f77077066,
       type: 2}
@@ -2820,6 +2821,7 @@ MonoBehaviour:
     Power: 2
     Resistance: 1
     Acceleration: 3
+    Ability: TeleportProximity
   - Name: Shockwave
     P1RendererPrefab: {fileID: 1516162714561376, guid: 035e06cfc2a893542a3258fd3cbb2b0b,
       type: 2}
@@ -2828,6 +2830,7 @@ MonoBehaviour:
     Power: 3
     Resistance: 1
     Acceleration: 2
+    Ability: TeleportProximity
   - Name: Spinny Pig
     P1RendererPrefab: {fileID: 1382542811452768, guid: 2838a232785ecfb438bd80daf402345a,
       type: 2}
@@ -2836,6 +2839,7 @@ MonoBehaviour:
     Power: 1
     Resistance: 2
     Acceleration: 3
+    Ability: TeleportProximity
   - Name: Dwayne
     P1RendererPrefab: {fileID: 1588949077095058, guid: 00f908556c3f4294ca30ebd1910f424a,
       type: 2}
@@ -2844,6 +2848,7 @@ MonoBehaviour:
     Power: 2
     Resistance: 3
     Acceleration: 1
+    Ability: TeleportProximity
   Chonnole:
     Name: Chonnole
     P1RendererPrefab: {fileID: 1516162714561376, guid: 61c6b429af70d4c43ba21eb3cf70f921,
@@ -2853,6 +2858,7 @@ MonoBehaviour:
     Power: 3
     Resistance: 3
     Acceleration: 3
+    Ability: 
   PasswordInput: {fileID: 420747283}
   UnlockQGBText: {fileID: 834359488}
   UnlockNotifyResetTime: 4

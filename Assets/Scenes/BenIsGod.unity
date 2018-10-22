@@ -1083,7 +1083,6 @@ GameObject:
   - component: {fileID: 1012069600}
   - component: {fileID: 1012069605}
   - component: {fileID: 1012069603}
-  - component: {fileID: 1012069606}
   m_Layer: 0
   m_Name: PlayerTwo
   m_TagString: Player
@@ -1113,6 +1112,7 @@ MonoBehaviour:
     Power: 1
     Resistance: 1
     Acceleration: 1
+    Ability: {fileID: 0}
 --- !u!58 &1012069601
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1206,21 +1206,6 @@ MonoBehaviour:
   fullPips: {fileID: 21300000, guid: 2357bc298c832904b8582034c4d60203, type: 3}
   playerDeathPrefab: {fileID: 1986754744700020, guid: 62c3158a80b0b1b41a435feb8f31a925,
     type: 2}
---- !u!114 &1012069606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1012069599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd595803cc14b1f45a43f5efcd23e14b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0.1
-  maxRadius: 10.07
-  abilityKey: AbilityPlayerTwo
-  ready: 0
 --- !u!1 &1025173285
 GameObject:
   m_ObjectHideFlags: 0
@@ -6114,22 +6099,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &1249270608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1249270598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2db819804eae634fbfac213c63884f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0.1
-  minRadius: 6
-  maxRadiusCorrector: 2
-  abilityKey: AbilityPlayerOne
-  ready: 0
 --- !u!1 &1261021302
 GameObject:
   m_ObjectHideFlags: 0

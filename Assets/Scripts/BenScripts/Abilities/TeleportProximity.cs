@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleportProximity : MonoBehaviour {
+public class TeleportProximity : Ability {
 
     public float cooldown = 5.0f;
     public float maxRadius = 5.0f;
-    public string abilityKey;
     public bool ready;
 
     private float stopwatch;
@@ -15,6 +14,23 @@ public class TeleportProximity : MonoBehaviour {
     {
         stopwatch = 0.0f;
         ready = false;
+    }
+
+    private void Awake()
+    {
+        switch (gameObject.name)
+        {
+            case "PlayerOne":
+                abilityKey = "AbilityPlayerOne";
+                break;
+            case "PlayerTwo":
+                abilityKey = "AbilityPlayerTwo";
+                break;
+            default:
+                Debug.Log("TeleportProximity Error: PlayerName not found. Disabling component.");
+                this.enabled = false;
+                break;
+        }
     }
 
     private void Teleport()

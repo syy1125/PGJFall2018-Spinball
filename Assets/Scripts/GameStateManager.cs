@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -44,7 +45,11 @@ public class GameStateManager : MonoBehaviour
 		GameObject p2 = GameObject.Find("PlayerTwo");
 		p2.GetComponent<MovementController>().QGB = p2QGB;
 		p2.GetComponent<PlayerRendererController>().SetRendererPrefab(p2QGB.P2RendererPrefab);
-	}
+
+        //Adding abilities here
+        p1.AddComponent(Type.GetType(p1QGB.Ability));
+        p2.AddComponent(Type.GetType(p2QGB.Ability));
+    }
 
 	public void GoToCombat(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB)
 	{
@@ -63,6 +68,10 @@ public class GameStateManager : MonoBehaviour
 		GameObject p2 = GameObject.Find("PlayerTwo");
 		p2.GetComponent<MovementController>().QGB = p2QGB;
 		p2.GetComponent<PlayerRendererController>().SetRendererPrefab(p2QGB.P2RendererPrefab);
+
+        //Adding abilities here
+        p1.AddComponent(Type.GetType(p1QGB.Ability));
+        p2.AddComponent(Type.GetType(p2QGB.Ability));
 	}
 
 	public void GoToOmega(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB)
