@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31eeb943a5a36d04f94b7fa829e981b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 15
+  countdown: 600
   rampModifier: -1
   rotationalSpeed: -2
   maxSpeed: 0
