@@ -72,6 +72,7 @@ public class GameStateManager : MonoBehaviour
 
 	public void EndGame(Sprite winner)
 	{
+		StopAllCoroutines();
 		StartCoroutine((LoadEndScreen(winner)));
 	}
 

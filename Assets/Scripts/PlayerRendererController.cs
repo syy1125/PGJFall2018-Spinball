@@ -36,6 +36,14 @@ public class PlayerRendererController : MonoBehaviour
 			prefab,
 			transform
 		);
+		if(this.gameObject.name.Equals("PlayerOne"))
+		{
+			DeathManager.p1Sprite = _renderer.GetComponent<SpriteRenderer>().sprite;
+		}
+		else
+		{
+			DeathManager.p2Sprite = _renderer.GetComponent<SpriteRenderer>().sprite;
+		}
 	}
 
 	private void Update()

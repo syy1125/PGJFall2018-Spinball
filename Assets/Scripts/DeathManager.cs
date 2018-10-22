@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class DeathManager : MonoBehaviour
 {
+	public static Sprite p1Sprite;
+	public static Sprite p2Sprite;
+
 	public float RespawnDelay = 2;
 	public Vector3 respawnCenter;
 	public float respawnDistance;
@@ -53,11 +56,11 @@ public class DeathManager : MonoBehaviour
 		{
 			if(this.gameObject.name.Equals("PlayerOne"))
 			{
-				GameStateManager.Instance.EndGame(GameObject.Find("PlayerTwo").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+				GameStateManager.Instance.EndGame(p2Sprite);
 			}
 			else
 			{
-				GameStateManager.Instance.EndGame(GameObject.Find("PlayerOne").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+				GameStateManager.Instance.EndGame(p1Sprite);
 			}
 		}
 		else
