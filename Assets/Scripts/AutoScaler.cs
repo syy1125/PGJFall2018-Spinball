@@ -29,8 +29,6 @@ public class AutoScaler : MonoBehaviour
 
 	private void UpdateScale()
 	{
-		Debug.Log(_cachedWidth);
-		
 		int index = 0;
 		while (index < Breakpoints.Length && Breakpoints[index] < _cachedWidth) index++;
 		transform.localScale = Vector3.one * Scales[Mathf.Clamp(index, 0, Scales.Length - 1)];
