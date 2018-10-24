@@ -87,10 +87,14 @@ public class GameStateManager : MonoBehaviour
 
 	private IEnumerator LoadEndScreen(Sprite winner)
 	{
+		Time.timeScale = 0.5f;
+		yield return new WaitForSeconds(1);
+	
 		AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync("EndScreen");
 
 		while (!loadSceneOperation.isDone) yield return null;
-
+		Time.timeScale = 1f;
+		
 		GameObject info = GameObject.Find("Winner");
 		info.GetComponent<Image>().sprite = winner;
 	}

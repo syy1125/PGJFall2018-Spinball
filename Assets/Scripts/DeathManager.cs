@@ -52,6 +52,7 @@ public class DeathManager : MonoBehaviour
 		Instantiate(playerDeathPrefab, gameObject.transform.position, Quaternion.identity);
 		gameObject.SetActive(false);
 		_deaths++;
+		UpdateDeathDisplay();
 		if(_deaths == pips.Length)
 		{
 			if(this.gameObject.name.Equals("PlayerOne"))
@@ -65,8 +66,6 @@ public class DeathManager : MonoBehaviour
 		}
 		else
 		{
-			UpdateDeathDisplay();
-
 			yield return new WaitForSeconds(RespawnDelay);
 
 			int angle = Random.Range(0, 360);
