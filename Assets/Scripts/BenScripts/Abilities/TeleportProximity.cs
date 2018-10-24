@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class TeleportProximity : Ability {
 
-    public float cooldown = 5.0f;
-    public float maxRadius = 5.0f;
-    public bool ready;
-
-    private float stopwatch;
+    public float maxRadius = 10.0f;
+    public float minRadius = 3.0f;
 
     private void Start()
     {
+        cooldown = 0.1f;
         stopwatch = 0.0f;
         ready = false;
     }
@@ -43,10 +41,15 @@ public class TeleportProximity : Ability {
         }
         else
         {
-            Vector2 newPosition = new Vector2(rb.transform.position.x, rb.transform.position.y)
+            Vector2 placement = new Vector2(rb.transform.position.x, rb.transform.position.y)
                                     + Random.insideUnitCircle * maxRadius;
 
-            rb.transform.position = newPosition;
+            if (Mathf.Abs(placement.x) < minRadius)
+                placement.x = minRadius;
+            if (Mathf.Abs(placement.y) < minRadius)
+                placement.y = minRadius;
+
+            rb.transform.position = placement;
         }
     }
 	

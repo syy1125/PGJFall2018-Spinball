@@ -2821,7 +2821,7 @@ MonoBehaviour:
     Power: 2
     Resistance: 1
     Acceleration: 3
-    Ability: TeleportProximity
+    Ability: TeleportRandom
   - Name: Shockwave
     P1RendererPrefab: {fileID: 1516162714561376, guid: 035e06cfc2a893542a3258fd3cbb2b0b,
       type: 2}

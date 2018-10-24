@@ -4,18 +4,19 @@ using UnityEngine;
 
 //Teleports player onto a random location on the stage (preferably).
 //Assumed that stage is in shape of a circle.
-//Stage MUST HAVE the StageRotator component. If you don't want the stage to rotate, just set the StageRotator values to something impossible.
+//Stage MUST HAVE the StageRotataor component. If you don't want the stage to rotate, just set the StageRotator values to something impossible.
 
 public class TeleportRandom : Ability {
 
-    public float cooldown = 2.0f;
     public float minRadius = 6.0f;       //minRange is used to avoid bumper in the center of stage (assuming standard stage).
     public float maxRadiusCorrector = 2.0f;     //Small value to ensure player does not teleport on the very edge of the screen.
 
-    public bool ready;
-
     private static StageRotator stage;
-    private float stopwatch;
+
+    private void Start()
+    {
+        cooldown = 0.1f;
+    }
 
     private void Awake()
     {
@@ -52,8 +53,10 @@ public class TeleportRandom : Ability {
 
         Vector2 placement = Random.insideUnitCircle * maxRadius;
 
-        while (Mathf.Abs(placement.x) < minRadius && Mathf.Abs(placement.y) < minRadius)
-            placement = Random.insideUnitCircle * maxRadius;
+        if (Mathf.Abs(placement.x) < minRadius)
+            placement.x = minRadius;
+        if (Mathf.Abs(placement.y) < minRadius)
+            placement.y = minRadius;
 
         Rigidbody2D rb = this.gameObject.GetComponent<Rigidbody2D>();
         rb.transform.position = placement;
