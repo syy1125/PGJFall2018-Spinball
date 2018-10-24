@@ -22,7 +22,7 @@ If you wish to make a pull request, please read the [Contributing](#contributing
 
 *Subsections:
 [Commits and Pull Requests](#commits-and-pull-requests),
-[Branches](#branches)
+[Branches](#branches),
 [Versioning](#versioning),
 [Trello](#trello)*
 
@@ -50,7 +50,7 @@ All other branches should be in the format of `<job>/<job-description>`.
 For example, to fix a bug, the branch would be named like `fix/stop-crash-due-to-bug`.
 To implement a new feature, the branch would be named like `feat/awesome-new-feature`.
 
-In summary: all other branches merges into `develop` for playtesting. `develop` merges into master for a new release.
+In summary: all other branches merges into `develop` for playtesting. `develop` merges into `master` for a new release.
 
 ### Versioning
 
