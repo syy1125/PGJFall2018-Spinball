@@ -1122,7 +1122,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -7281,7 +7281,7 @@ Prefab:
     - target: {fileID: 58943691924586440, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212102844960837040, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}

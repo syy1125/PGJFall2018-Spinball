@@ -50,7 +50,7 @@ public class Bumper : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D col)
+	private void OnTriggerEnter2D(Collider2D col)
 	{
 		Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
 		if(rb != null)

@@ -57,12 +57,21 @@ public class GameStateManager : MonoBehaviour
 
 		while (!loadSceneOperation.isDone) yield return null;
 
+		QGBUpdate(p1QGB);
+		QGBUpdate(p2QGB);
 		GameObject p1 = GameObject.Find("PlayerOne");
 		p1.GetComponent<MovementController>().QGB = p1QGB;
 		p1.GetComponent<PlayerRendererController>().SetRendererPrefab(p1QGB.P1RendererPrefab);
 		GameObject p2 = GameObject.Find("PlayerTwo");
 		p2.GetComponent<MovementController>().QGB = p2QGB;
 		p2.GetComponent<PlayerRendererController>().SetRendererPrefab(p2QGB.P2RendererPrefab);
+	}
+
+	private void QGBUpdate(QuantumGyroBlade QGB)
+	{
+		QGB.Acceleration = CurveTable.Acceleration[(int)QGB.Acceleration];
+		QGB.Power = CurveTable.Power[(int)QGB.Power];
+		QGB.Resistance = CurveTable.Resistance[(int)QGB.Resistance];	
 	}
 
 	public void GoToOmega(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB)

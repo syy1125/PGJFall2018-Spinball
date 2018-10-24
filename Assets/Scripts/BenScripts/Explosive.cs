@@ -21,28 +21,21 @@ public class Explosive : MonoBehaviour {
     {
         PlayBombSound();
         Instantiate(explosionObject, this.transform.position, Quaternion.identity);
-        ContactFilter2D contact = new ContactFilter2D();
-        contact.layerMask = mask;
-        Collider2D[] results = new Collider2D[10];
-
-        int hitByBlast = Physics2D.OverlapCircle(this.transform.position, blastRadius, contact, results);
-        if (hitByBlast > 0)
+        Collider2D[] overlaps = Physics2D.OverlapCircleAll(transform.position, blastRadius);
+        foreach(Collider2D col in overlaps)
         {
-            for (int i = 0; i < hitByBlast; ++i)
+            Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
+            if (rb != null && col.gameObject.CompareTag("Player"))
             {
-                Rigidbody2D rb = results[i].GetComponent<Rigidbody2D>();
-                if (rb != null)
-                {
-                    rb.velocity = Vector2.zero;
-                    Vector2 direction = rb.position - new Vector2(transform.position.x, transform.position.y);
-                    direction.Normalize();
-                    rb.AddForce(direction * blastForce, ForceMode2D.Impulse);
-                }
+                rb.velocity = Vector2.zero;
+                Vector2 direction = rb.position - (Vector2)transform.position;
+                direction.Normalize();
+                rb.AddForce(direction * blastForce, ForceMode2D.Impulse);
             }
         }
     }
 
-    private void Bounce(Collision2D collision)
+    private void Bounce(Collider2D collision)
     {
         Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
 
@@ -54,7 +47,24 @@ public class Explosive : MonoBehaviour {
     }
 
     
-    void OnCollisionEnter2D(Collision2D collision)
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Player"))
+    //     {
+    //         --health;
+
+    //         if (health == 0)
+    //         {
+    //             Explosion();
+    //             Destroy(gameObject);
+    //         }
+    //         else
+    //         {
+    //             Bounce(collision);
+    //         }
+    //     }
+    // }
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
