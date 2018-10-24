@@ -26,8 +26,8 @@ Every version is labeled as `MAJOR.MINOR.PATCH`.
   
 - `MINOR`: Minor changes or additions to game. Most players would not feel that the game is significantly different.
   
-  This may include but is not limited to: introduction of new QGBs, adjustment of QGB stats, etc.
+  This may include but is not limited to: introduction of new QGBs sets, adjustments to existing game mechanics, etc.
   
 - `PATCH`: Bug fixes and/or polish. There is no mechanics change.
 
-  This may include but is not limited to: bug fixes, new special effects, performance optimizations, etc.
+  This may include but is not limited to: bug fixes, new special effects, balance changes, performance optimizations, etc.
