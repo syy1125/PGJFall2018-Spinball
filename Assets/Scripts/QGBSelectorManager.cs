@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Globalization;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -163,6 +162,16 @@ public class QGBSelectorManager : MonoBehaviour
 
 		GameObject playerRenderer = Instantiate(playerRendererPrefab, preview);
 		playerRenderer.transform.localScale *= RenderScale;
+
+		Image image = playerRenderer.GetComponent<Image>();
+		if (image == null)
+		{
+			image = playerRenderer.AddComponent<Image>();
+			image.sprite = playerRenderer.GetComponent<SpriteRenderer>().sprite;
+		}
+
+		image.enabled = true;
+		playerRenderer.GetComponent<SpriteRenderer>().enabled = false;
 	}
 
 	private void UpdateUI()
