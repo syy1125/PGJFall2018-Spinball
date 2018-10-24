@@ -22,18 +22,35 @@ If you wish to make a pull request, please read the [Contributing](#contributing
 
 *Subsections:
 [Commits and Pull Requests](#commits-and-pull-requests),
+[Branches](#branches)
 [Versioning](#versioning),
 [Trello](#trello)*
 
 ### Commits and Pull Requests
 
-A single commit should be a group of coherent changes that, together, serve a single purpose.
-
 Commit messages should be concise and descriptive.
 
 Use *imperatives* (Add, Change, Fix, etc.) instead of *past tense* (Added, Changed, Fixed, etc.).
 
-Similarly, a Pull Request (PR) should have a singular purpose.
+A single commit should be a group of coherent changes that, together, serve a single purpose.
+
+Similarly, a Pull Request (PR) should have a single purpose.
+
+### Branches
+
+We use branches to keep our work organized.
+
+There are two core branches, `master` and `develop`. `master` is used for release only; `develop` is mainly used for playtesting and hotfixes.
+
+As this project enters long-term development, contributors should not push directly to `master`. Pushes to `develop` should be limited to only hotfixes.
+Instead of pushing to those branches, make a new branch using the following naming scheme, and make a pull request for merging into `develop` in the end.
+
+All other branches should be in the format of `<job>/<job-description>`.
+
+For example, to fix a bug, the branch would be named like `fix/stop-crash-due-to-bug`.
+To implement a new feature, the branch would be named like `feat/awesome-new-feature`.
+
+In summary: all other branches merges into `develop` for playtesting. `develop` merges into master for a new release.
 
 ### Versioning
 
