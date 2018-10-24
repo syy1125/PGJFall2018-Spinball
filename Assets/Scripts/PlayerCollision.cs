@@ -5,10 +5,8 @@ using UnityEngine.Serialization;
 
 public class PlayerCollision : MonoBehaviour
 {
-	[FormerlySerializedAs("collisionDamping")]
-	public float CollisionDamping;
 
-	private float globalCollisionMultiplier = 0.7f;
+	private float globalCollisionMultiplier = 0.9f;
 
 	private Rigidbody2D _rigidbody2D;
 	private ParticleSystem _particleSystem;
@@ -52,7 +50,7 @@ public class PlayerCollision : MonoBehaviour
 		{
 			QuantumGyroBlade selfQGB = GetComponent<MovementController>().QGB;
 			QuantumGyroBlade opponentQGB = other.GetComponent<MovementController>().QGB;
-			Feedback(other, (other.transform.position + transform.position) / 2, _rigidbody2D.velocity.magnitude + rb.velocity.magnitude);
+			Feedback(other, _rigidbody2D.velocity.magnitude + rb.velocity.magnitude);
 			float a1 = Vector2.Angle(rb.velocity, transform.position - other.transform.position);
 			float a2 = Vector2.Angle(_rigidbody2D.velocity, transform.position - other.transform.position);
 			if(a1 > a2)
@@ -65,27 +63,31 @@ public class PlayerCollision : MonoBehaviour
 			}
 		}
 	}
+	private void OnTriggerStay(Collider other)
+	{
+		
+	}
 
 	private void DoCollision(Rigidbody2D instigator, Rigidbody2D receiver, float instPow, float instRes, float recPow, float recRes)
 	{
 		Vector2 dir = instigator.transform.position - receiver.transform.position;
 		float recMag = Vector3.Project(instigator.velocity, dir).magnitude * (instPow / recRes);
 		float instMag = Vector3.Project(receiver.velocity, dir).magnitude * (recPow / instRes);
-		
+		//Debug.Log("rec : " + recMag);
+		//Debug.Log("inst: " + instMag);
 		//instigator.velocity =  instigator.velocity + (dir * CollisionDamping * instMag);
 		//receiver.velocity = receiver.velocity + (-dir * CollisionDamping * recMag);
 		instigator.velocity = (dir * globalCollisionMultiplier * instMag);
 		receiver.velocity = (-dir * globalCollisionMultiplier * recMag);
 	}
 
-	void Feedback(GameObject other, Vector3 toSpawn, float totalMagnitude)
+	void Feedback(GameObject other, float totalMagnitude)
 	{
 		AudioManager.instance.PlayClangSound();
-		_particleSystem.transform.position = toSpawn;
 		Camera.main.GetComponent<CameraController>().ScreenShake(totalMagnitude);
+		_particleSystem.transform.position = (other.transform.position + gameObject.transform.position) / 2;
 		// UnityEngine.ParticleSystem.ShapeModule editableShape = _particleSystem.shape;
-		// Vector3 newRotation = new Vector3(0, 0, Vector2.SignedAngle(Vector2.down, other.transform.position - transform.position) + 45);
-		// editableShape.rotation = newRotation;
+		// editableShape.position = (other.transform.position - gameObject.transform.position);
 		_particleSystem.Play();
 	}
 }

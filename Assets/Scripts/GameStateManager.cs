@@ -32,52 +32,40 @@ public class GameStateManager : MonoBehaviour
 		SceneManager.LoadScene("QGBSelection");
 	}
 
-	private IEnumerator LoadCombatSceneSequence(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB)
-	{
-		AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync("Combat");
-
-		while (!loadSceneOperation.isDone) yield return null;
-
-		GameObject p1 = GameObject.Find("PlayerOne");
-		p1.GetComponent<MovementController>().QGB = p1QGB;
-		p1.GetComponent<PlayerRendererController>().SetRendererPrefab(p1QGB.P1RendererPrefab);
-		GameObject p2 = GameObject.Find("PlayerTwo");
-		p2.GetComponent<MovementController>().QGB = p2QGB;
-		p2.GetComponent<PlayerRendererController>().SetRendererPrefab(p2QGB.P2RendererPrefab);
-	}
-
 	public void GoToCombat(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB)
 	{
-		StartCoroutine(LoadCombatSceneSequence(p1QGB, p2QGB));
-	}
-
-	private IEnumerator LoadOmegaSceneSequence(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB)
-	{
-		AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync("Omega");
-
-		while (!loadSceneOperation.isDone) yield return null;
-
-		QGBUpdate(p1QGB);
-		QGBUpdate(p2QGB);
-		GameObject p1 = GameObject.Find("PlayerOne");
-		p1.GetComponent<MovementController>().QGB = p1QGB;
-		p1.GetComponent<PlayerRendererController>().SetRendererPrefab(p1QGB.P1RendererPrefab);
-		GameObject p2 = GameObject.Find("PlayerTwo");
-		p2.GetComponent<MovementController>().QGB = p2QGB;
-		p2.GetComponent<PlayerRendererController>().SetRendererPrefab(p2QGB.P2RendererPrefab);
-	}
-
-	private void QGBUpdate(QuantumGyroBlade QGB)
-	{
-		QGB.Acceleration = CurveTable.Acceleration[(int)QGB.Acceleration];
-		QGB.Power = CurveTable.Power[(int)QGB.Power];
-		QGB.Resistance = CurveTable.Resistance[(int)QGB.Resistance];	
+		StartCoroutine(LoadSceneSequence(p1QGB, p2QGB, "Combat"));
 	}
 
 	public void GoToOmega(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB)
 	{
-		StartCoroutine(LoadOmegaSceneSequence(p1QGB, p2QGB));
+		StartCoroutine(LoadSceneSequence(p1QGB, p2QGB, "Omega"));
 	}
+
+	private IEnumerator LoadSceneSequence(QuantumGyroBlade p1QGB, QuantumGyroBlade p2QGB, string scene)
+	{
+		AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(scene);
+
+		while (!loadSceneOperation.isDone) yield return null;
+
+		GameObject p1 = GameObject.Find("PlayerOne");
+		QGBUpdate(p1.GetComponent<MovementController>(), p1QGB);
+		p1.GetComponent<PlayerRendererController>().SetRendererPrefab(p1QGB.P1RendererPrefab);
+		
+		GameObject p2 = GameObject.Find("PlayerTwo");
+		QGBUpdate(p2.GetComponent<MovementController>(), p2QGB);
+		p2.GetComponent<PlayerRendererController>().SetRendererPrefab(p2QGB.P2RendererPrefab);
+	}	
+
+	private void QGBUpdate(MovementController movementController, QuantumGyroBlade QGB)
+	{
+		Debug.Log("ind " + QGB.Acceleration + " " + QGB.Power + " " + QGB.Resistance);
+		movementController.QGB.Acceleration = CurveTable.Acceleration[(int)(QGB.Acceleration - 1)];
+		movementController.QGB.Power = CurveTable.Power[(int)(QGB.Power - 1)];
+		movementController.QGB.Resistance = CurveTable.Resistance[(int)(QGB.Resistance - 1)];
+	}
+
+	
 
 	public void EndGame(Sprite winner)
 	{
