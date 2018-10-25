@@ -3,7 +3,8 @@
 *Sections:
 [Project Information](#project-information),
 [Public Feedback](#public-feedback),
-[Contributing](#contributing)*
+[Contributing](#contributing),
+[Trello](#trello)*
 
 ## Project Information
 
@@ -40,17 +41,9 @@ Similarly, a Pull Request (PR) should have a single purpose.
 
 We use branches to keep our work organized.
 
-There are two core branches, `master` and `develop`. `master` is used for release only; `develop` is mainly used for playtesting and hotfixes.
+There are two core branches, `master` and `develop`.
 
-As this project enters long-term development, contributors should not push directly to `master`. Pushes to `develop` should be limited to only hotfixes.
-Instead of pushing to those branches, make a new branch using the following naming scheme, and make a pull request for merging into `develop` in the end.
-
-All other branches should be in the format of `<job>/<job-description>`.
-
-For example, to fix a bug, the branch would be named like `fix/stop-crash-due-to-bug`.
-To implement a new feature, the branch would be named like `feat/awesome-new-feature`.
-
-In summary: all other branches merges into `develop` for playtesting. `develop` merges into `master` for a new release.
+Push all changes to `develop`. Once the build is stable, merge into `master` and release a new version.
 
 ### Versioning
 
@@ -69,11 +62,15 @@ Every version is labeled as `MAJOR.MINOR.PATCH`.
 
   This may include but is not limited to: bug fixes, new special effects, balance changes, performance optimizations, etc.
 
-### Trello
+## Trello
+
+*Subsections:
+[Labels](#labels),
+[Lists](#lists)*
 
 The [trello board](https://trello.com/b/EyfOZSGU) tracks past, present, and future development progress of Spinball.
 
-#### Labels
+### Labels
 
 There are two primary types of labels: **Priority** labels and **Type** labels.
 
@@ -89,7 +86,7 @@ The three prefixes of type labels correspond to the three parts of versioning sc
 
 What comes after the prefix further refine the type of job: Aesthetics, Bug, Feature, etc.
 
-#### Lists
+### Lists
 
 There are several lists in the trello board.
 
