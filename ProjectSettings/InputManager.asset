@@ -7,8 +7,8 @@ InputManager:
   m_Axes:
   - serializedVersion: 3
     m_Name: HorizontalPlayerOne
-    descriptiveName: 
-    descriptiveNegativeName: 
+    descriptiveName: P1 Right
+    descriptiveNegativeName: P1 Left
     negativeButton: a
     positiveButton: d
     altNegativeButton: 
@@ -23,8 +23,8 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: HorizontalPlayerTwo
-    descriptiveName: 
-    descriptiveNegativeName: 
+    descriptiveName: P2 Right
+    descriptiveNegativeName: P2 Left
     negativeButton: j
     positiveButton: l
     altNegativeButton: 
@@ -39,8 +39,8 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: VerticalPlayerOne
-    descriptiveName: 
-    descriptiveNegativeName: 
+    descriptiveName: P1 Up
+    descriptiveNegativeName: P1 Down
     negativeButton: s
     positiveButton: w
     altNegativeButton: 
@@ -55,8 +55,8 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: VerticalPlayerTwo
-    descriptiveName: 
-    descriptiveNegativeName: 
+    descriptiveName: P2 Up
+    descriptiveNegativeName: P2 Down
     negativeButton: k
     positiveButton: i
     altNegativeButton: 
