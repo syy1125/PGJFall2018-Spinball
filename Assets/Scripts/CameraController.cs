@@ -2,31 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class CameraController : MonoBehaviour 
 {
-	public GameObject playerOne;
-	public GameObject playerTwo;
+	public List<GameObject> players;
 	public float cameraDamping;
 	public Vector3 offset;
 	public float minimumOrthographicSize;
 	public float maximumOrthographicSize;
 
 	private float currentDegreeOffset;
-
-	void Start () 
-	{
-		this.transform.position = ((playerOne.transform.position + playerTwo.transform.position) / 2) + offset;
-	}
 	
+	void Start()
+	{
+		players = new List<GameObject>();
+	}
+
 	void LateUpdate ()
 	{
-		Vector3 midpoint = (playerOne.transform.position + playerTwo.transform.position) / 2;
-		float distance = Mathf.Min(Mathf.Max(minimumOrthographicSize, (playerOne.transform.position - playerTwo.transform.position).magnitude), maximumOrthographicSize);
+		if(players.Count == 0)
+		{
+			return;
+		}
+		Vector3 midpoint = Vector3.zero;
+		for(int x = 0; x < players.Count; ++x)
+		{
+			midpoint += players[x].transform.position;
+		}
+		midpoint /= players.Count;
+		float distance = Mathf.Min(Mathf.Max(minimumOrthographicSize, ((midpoint - players[0].transform.position) * 2).magnitude), maximumOrthographicSize);
 		this.transform.position = Vector3.Lerp(this.transform.position, midpoint + offset, cameraDamping);
 		Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, distance, cameraDamping);
-		//this.transform.position = toFollow.transform.position + offset;
-		//this.transform.position = Vector3.Lerp(this.transform.position, toFollow.transform.position + offset, cameraDamping);
 	}
 
 	public void ScreenShake(float totalMagnitude)
@@ -46,6 +52,5 @@ public class CameraController : MonoBehaviour
 			transform.Translate(Random.Range(-amountToShake, amountToShake), Random.Range(-amountToShake, amountToShake), 0);
 			yield return null;
 		}	
-		this.transform.position = (playerOne.transform.position + playerTwo.transform.position) / 2;
 	}
 }

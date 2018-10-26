@@ -23,4 +23,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Production/Omega.unity
     guid: 7e286845abd5fe6458d2c3f75d9d38fc
+  - enabled: 1
+    path: Assets/Scenes/NetworkingTestScenes/Matchmaking.unity
+    guid: d66a71f1543f80f4ab410e780d50018d
+  - enabled: 1
+    path: Assets/Scenes/NetworkingTestScenes/NetworkedQGBSelection.unity
+    guid: cb684094265f904449a4455bd997cd1a
+  - enabled: 1
+    path: Assets/Scenes/NetworkingTestScenes/NetworkedCombat.unity
+    guid: 34c617c1fcd1fba4d9a4f734ccd806be
+  - enabled: 1
+    path: Assets/Scenes/NetworkingTestScenes/NetworkedTesting.unity
+    guid: 18d2b7e003bb2c74ca6bb21ed8e1b3ee
   m_configObjects: {}
