@@ -8,5 +8,5 @@ AnimatorOverrideController:
   m_Name: P1HamsterController
   m_Controller: {fileID: 9100000, guid: e3c0dea13eef595478515141779807f7, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 79e7f398467e4a744a622676245ab91a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c177774a3d836a444881aab93e90dce8, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 83814c40052cc9c4eb27f1e7abcae510, type: 2}
