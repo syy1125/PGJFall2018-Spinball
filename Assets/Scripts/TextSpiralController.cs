@@ -15,6 +15,7 @@ public class TextSpiralController : MonoBehaviour
 
 	public float AngularSpeed = 0.1f;
 	private float _scaleSpeed;
+	private Camera _mainCamera;
 
 	private void Start()
 	{
@@ -43,6 +44,8 @@ public class TextSpiralController : MonoBehaviour
 			scale *= ScaleMultiplier;
 			angle -= AngleDelta;
 		}
+		
+		_mainCamera = Camera.main;
 
 		// MATH
 		_scaleSpeed = Mathf.Pow(1 / ScaleMultiplier, AngularSpeed / AngleDelta);
@@ -50,8 +53,8 @@ public class TextSpiralController : MonoBehaviour
 
 	private void Update()
 	{
-		transform.localScale *= Mathf.Pow(_scaleSpeed, Time.deltaTime);
-		transform.Rotate(Vector3.forward * AngularSpeed * Time.deltaTime * RAD);
+		_mainCamera.orthographicSize /= Mathf.Pow(_scaleSpeed, Time.deltaTime);
+		_mainCamera.transform.Rotate(Vector3.back * AngularSpeed * Time.deltaTime * RAD);
 
 		if (Input.anyKeyDown)
 		{
