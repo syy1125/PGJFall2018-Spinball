@@ -736,6 +736,9 @@ MonoBehaviour:
   ContentFile: {fileID: 4900000, guid: 579f5d7d7a104cc2a99b9702c6137ca4, type: 3}
   CharacterPrefab: {fileID: 1551197905359634, guid: 5b4a787c9bd2d5c46a20ab10fd74b367,
     type: 2}
+  ViewedOpeningPrefKey: ViewedOpening
+  SkipInEditor: 0
+  DeletePrefInEditor: 0
   InitialRadius: 80
   TextScale: 0.1
   ScaleMultiplier: 0.998
