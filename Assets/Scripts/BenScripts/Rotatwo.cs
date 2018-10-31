@@ -10,8 +10,6 @@ public class Rotatwo : MonoBehaviour {
     private void Awake()
     {
         stage = StageRotator.Instance;
-	   if(stage == null)
-	   	Destroy(gameObject);
     }
 
     // Update is called once per frame

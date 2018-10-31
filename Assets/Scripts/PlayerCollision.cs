@@ -63,18 +63,9 @@ public class PlayerCollision : MonoBehaviour
 			}
 		}
 	}
-	void OnTriggerStay2D(Collider2D col)
+	private void OnTriggerStay(Collider other)
 	{
-		GameObject other = col.gameObject;
-		Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
 		
-		if (rb != null && other.CompareTag("Player"))
-		{
-			_particleSystem.Play();
-			Vector2 dir = gameObject.transform.position - other.transform.position;
-			rb.AddForce(-dir * 20);
-			_rigidbody2D.AddForce(dir * 20);
-		}
 	}
 
 	private void DoCollision(Rigidbody2D instigator, Rigidbody2D receiver, float instPow, float instRes, float recPow, float recRes)

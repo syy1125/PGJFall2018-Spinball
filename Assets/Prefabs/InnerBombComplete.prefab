@@ -84,7 +84,6 @@ MonoBehaviour:
   blastForce: 35
   bounceForce: 0
   blastRadius: 7
-  fadeInTime: 4
   mask:
     serializedVersion: 2
     m_Bits: 4294967295

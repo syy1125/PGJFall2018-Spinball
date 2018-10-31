@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1132,16 +1132,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb02cdd768a3004ca46c296ec81ebda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseInputStrength: 20
+  BaseInputStrength: 30
   HorizontalAxisName: HorizontalPlayerTwo
   VerticalAxisName: VerticalPlayerTwo
   QGB:
     Name: Unknown
     P1RendererPrefab: {fileID: 0}
     P2RendererPrefab: {fileID: 0}
-    Power: 2
-    Resistance: 2
-    Acceleration: 2
+    Power: 1
+    Resistance: 1
+    Acceleration: 1
 --- !u!58 &1012069601
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1152,7 +1152,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1191,7 +1191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpinsPerSecond: 4
-  RendererPrefab: {fileID: 1920311373711724, guid: 7eaf3e0b92174cb479ae9ea6263d4b48,
+  RendererPrefab: {fileID: 1182944181593542, guid: 6711f9914b65f6d48913b75ea8829ecd,
     type: 2}
 --- !u!4 &1012069604
 Transform:
@@ -6601,65 +6601,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &1588692524
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 17.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 58406388728248162, guid: 5c5767fd6d2babb4c93d9534c1842156,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052423924058844, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1594152031
 GameObject:
   m_ObjectHideFlags: 0
@@ -7026,7 +6967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b44071892c23c949a7578ccfc94a79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefab: {fileID: 1600187318186600, guid: 3f4a5e4802509fa4bb495381617c93df, type: 2}
+  bombPrefab: {fileID: 1748170147716288, guid: 319c4aad652855c4a8227ba29b431580, type: 2}
   edgeDistance: 34
   numBombs: 30
 --- !u!4 &1733069777
@@ -7054,12 +6995,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefabs:
-  - {fileID: 1241891972629268, guid: 5c5767fd6d2babb4c93d9534c1842156, type: 2}
+  - {fileID: 1063686496911866, guid: 99ed62bf7d9ac8b4db243ef4e65ba78a, type: 2}
   - {fileID: 1515367968784336, guid: 9336093a203271442b7c56ec0d2d3060, type: 2}
   itemProbabilites:
   - 0.8
   - 0.2
-  countdown: 1
+  countdown: 90
   cooldown: 4
   radiusLimit: 25
   radiusMinimum: 5
@@ -7383,7 +7324,7 @@ Prefab:
     - target: {fileID: 58943691924586440, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212102844960837040, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
@@ -7486,7 +7427,7 @@ Prefab:
     - target: {fileID: 114824534635328670, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
       propertyPath: BaseInputStrength
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114133838626953850, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
@@ -7507,23 +7448,23 @@ Prefab:
     - target: {fileID: 114824534635328670, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
       propertyPath: QGB.Power
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114824534635328670, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
       propertyPath: QGB.Acceleration
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114824534635328670, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
       propertyPath: QGB.Resistance
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114876553548703644, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
       propertyPath: RendererPrefab
       value: 
-      objectReference: {fileID: 1134215107169180, guid: c7c6423d921dcb24a8e670a53e813deb,
+      objectReference: {fileID: 1588949077095058, guid: 00f908556c3f4294ca30ebd1910f424a,
         type: 2}
     - target: {fileID: 114287988912508540, guid: eaa0f3543c80e24459f78a260acb534a,
         type: 2}
