@@ -12,9 +12,9 @@ public class NetworkPlayerManager : MonoBehaviourPunCallbacks
 	{
 		if(photonView.IsMine)
 		{
-			localPlayer = this.gameObject;
-			Camera.main.GetComponent<CameraController>().players.Add(this.gameObject);
+			localPlayer = this.gameObject;	
 		}
+		Camera.main.GetComponent<CameraController>().players.Add(this.gameObject);
 	}
 
 	// void OnDestroy()
