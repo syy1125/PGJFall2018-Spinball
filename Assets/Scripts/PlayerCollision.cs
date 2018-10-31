@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 public class PlayerCollision : MonoBehaviour
 {
+	public GameObject sparkPrefab;
 
 	private float globalCollisionMultiplier = 0.9f;
 
@@ -14,7 +15,7 @@ public class PlayerCollision : MonoBehaviour
 	private void Start()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
-		_particleSystem = GetComponent<ParticleSystem>();
+		//_particleSystem = GetComponent<ParticleSystem>();
 	}
 
 	// private void OnCollisionEnter2D(Collision2D col)
@@ -70,7 +71,8 @@ public class PlayerCollision : MonoBehaviour
 		
 		if (rb != null && other.CompareTag("Player"))
 		{
-			_particleSystem.Play();
+			Instantiate(sparkPrefab, (other.transform.position + transform.position) / 2, Quaternion.identity);
+			//_particleSystem.Play();
 			Vector2 dir = gameObject.transform.position - other.transform.position;
 			rb.AddForce(-dir * 20);
 			_rigidbody2D.AddForce(dir * 20);
@@ -94,9 +96,11 @@ public class PlayerCollision : MonoBehaviour
 	{
 		AudioManager.instance.PlayClangSound();
 		Camera.main.GetComponent<CameraController>().ScreenShake(totalMagnitude);
-		_particleSystem.transform.position = (other.transform.position + gameObject.transform.position) / 2;
+		GameObject temp = Instantiate(sparkPrefab, (other.transform.position + transform.position) / 2, Quaternion.identity);
+		//temp.GetComponent<ParticleSystem.
+		//_particleSystem.transform.position = (other.transform.position + gameObject.transform.position) / 2;
 		// UnityEngine.ParticleSystem.ShapeModule editableShape = _particleSystem.shape;
 		// editableShape.position = (other.transform.position - gameObject.transform.position);
-		_particleSystem.Play();
+		//_particleSystem.Play();
 	}
 }
