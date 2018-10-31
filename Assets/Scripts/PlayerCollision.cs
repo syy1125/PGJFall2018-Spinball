@@ -7,7 +7,7 @@ public class PlayerCollision : MonoBehaviour
 {
 	public GameObject sparkPrefab;
 
-	private float globalCollisionMultiplier = 0.9f;
+	private float globalCollisionMultiplier = 1.5f;
 
 	private Rigidbody2D _rigidbody2D;
 	private ParticleSystem _particleSystem;
@@ -82,6 +82,7 @@ public class PlayerCollision : MonoBehaviour
 	private void DoCollision(Rigidbody2D instigator, Rigidbody2D receiver, float instPow, float instRes, float recPow, float recRes)
 	{
 		Vector2 dir = instigator.transform.position - receiver.transform.position;
+		dir.Normalize();
 		float recMag = Vector3.Project(instigator.velocity, dir).magnitude * (instPow / recRes);
 		float instMag = Vector3.Project(receiver.velocity, dir).magnitude * (recPow / instRes);
 		//Debug.Log("rec : " + recMag);
