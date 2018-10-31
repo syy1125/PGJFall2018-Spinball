@@ -46,7 +46,7 @@ public class NetworkPlayerCollision : MonoBehaviour
 		GameObject other = col.gameObject;
 		Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
 		
-		if (rb != null && other.CompareTag("Player") && other != gameObject)
+		if (rb != null && other.CompareTag("Player"))
 		{
 			QuantumGyroBlade selfQGB = GetComponent<NetworkPlayerMovement>().QGB;
 			QuantumGyroBlade opponentQGB = other.GetComponent<NetworkPlayerMovement>().QGB;
