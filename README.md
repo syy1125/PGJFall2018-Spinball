@@ -3,7 +3,8 @@
 *Sections:
 [Project Information](#project-information),
 [Public Feedback](#public-feedback),
-[Contributing](#contributing)*
+[Contributing](#contributing),
+[Trello](#trello)*
 
 ## Project Information
 
@@ -22,18 +23,27 @@ If you wish to make a pull request, please read the [Contributing](#contributing
 
 *Subsections:
 [Commits and Pull Requests](#commits-and-pull-requests),
+[Branches](#branches),
 [Versioning](#versioning),
 [Trello](#trello)*
 
 ### Commits and Pull Requests
 
-A single commit should be a group of coherent changes that, together, serve a single purpose.
-
 Commit messages should be concise and descriptive.
 
 Use *imperatives* (Add, Change, Fix, etc.) instead of *past tense* (Added, Changed, Fixed, etc.).
 
-Similarly, a Pull Request (PR) should have a singular purpose.
+A single commit should be a group of coherent changes that, together, serve a single purpose.
+
+Similarly, a Pull Request (PR) should have a single purpose.
+
+### Branches
+
+We use branches to keep our work organized.
+
+There are two core branches, `master` and `develop`.
+
+Push all changes to `develop`. Once the build is stable, merge into `master` and release a new version.
 
 ### Versioning
 
@@ -52,11 +62,15 @@ Every version is labeled as `MAJOR.MINOR.PATCH`.
 
   This may include but is not limited to: bug fixes, new special effects, balance changes, performance optimizations, etc.
 
-### Trello
+## Trello
+
+*Subsections:
+[Labels](#labels),
+[Lists](#lists)*
 
 The [trello board](https://trello.com/b/EyfOZSGU) tracks past, present, and future development progress of Spinball.
 
-#### Labels
+### Labels
 
 There are two primary types of labels: **Priority** labels and **Type** labels.
 
@@ -72,7 +86,7 @@ The three prefixes of type labels correspond to the three parts of versioning sc
 
 What comes after the prefix further refine the type of job: Aesthetics, Bug, Feature, etc.
 
-#### Lists
+### Lists
 
 There are several lists in the trello board.
 

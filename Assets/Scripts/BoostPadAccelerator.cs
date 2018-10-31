@@ -14,17 +14,17 @@ public class BoostPadAccelerator : MonoBehaviour {
         timeElapsed = 0;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        GameObject theThing = col.gameObject;
-        Rigidbody2D rb = theThing.GetComponent<Rigidbody2D>();
-        if (theThing.CompareTag("Player") && rb != null)
-        {
-            Debug.Log("old: " + rb.velocity);
-            rb.velocity = new Vector2(rb.velocity.x * 1.5f, rb.velocity.y * 1.5f);
-            Debug.Log("new: "+ rb.velocity);
-        }
-    }
+    // void OnCollisionEnter2D(Collision2D col)
+    // {
+    //     GameObject theThing = col.gameObject;
+    //     Rigidbody2D rb = theThing.GetComponent<Rigidbody2D>();
+    //     if (theThing.CompareTag("Player") && rb != null)
+    //     {
+    //         Debug.Log("old: " + rb.velocity);
+    //         rb.velocity = new Vector2(rb.velocity.x * 1.5f, rb.velocity.y * 1.5f);
+    //         Debug.Log("new: "+ rb.velocity);
+    //     }
+    // }
 
     private void OnTriggerEnter2D(Collider2D col)
     {

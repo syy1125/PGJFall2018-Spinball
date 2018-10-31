@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TextSpiralController : MonoBehaviour
@@ -8,6 +9,9 @@ public class TextSpiralController : MonoBehaviour
 	public TextAsset ContentFile;
 	public GameObject CharacterPrefab;
 
+	public string ViewedOpeningPrefKey = "ViewedOpening";
+	public bool SkipInEditor;
+
 	public float InitialRadius = 100;
 	public float TextScale = 0.2f;
 	public float ScaleMultiplier = 1;
@@ -15,9 +19,12 @@ public class TextSpiralController : MonoBehaviour
 
 	public float AngularSpeed = 0.1f;
 	private float _scaleSpeed;
+	private Camera _mainCamera;
 
 	private void Start()
 	{
+		CheckForSkip();
+		
 		string content = ContentFile.text;
 
 		float scale = 1;
@@ -44,14 +51,33 @@ public class TextSpiralController : MonoBehaviour
 			angle -= AngleDelta;
 		}
 
+		_mainCamera = Camera.main;
+
 		// MATH
 		_scaleSpeed = Mathf.Pow(1 / ScaleMultiplier, AngularSpeed / AngleDelta);
 	}
 
+	private void CheckForSkip()
+	{
+		if (PlayerPrefs.HasKey(ViewedOpeningPrefKey))
+		{
+			if (Application.isEditor && !SkipInEditor)
+			{
+				return;
+			}
+
+			GameStateManager.Instance.GoToMainMenu();
+		}
+		else
+		{
+			PlayerPrefs.SetInt(ViewedOpeningPrefKey, 1);
+		}
+	}
+
 	private void Update()
 	{
-		transform.localScale *= Mathf.Pow(_scaleSpeed, Time.deltaTime);
-		transform.Rotate(Vector3.forward * AngularSpeed * Time.deltaTime * RAD);
+		_mainCamera.orthographicSize /= Mathf.Pow(_scaleSpeed, Time.deltaTime);
+		_mainCamera.transform.Rotate(Vector3.back * AngularSpeed * Time.deltaTime * RAD);
 
 		if (Input.anyKeyDown)
 		{

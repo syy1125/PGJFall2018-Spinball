@@ -7,8 +7,8 @@ InputManager:
   m_Axes:
   - serializedVersion: 3
     m_Name: HorizontalPlayerOne
-    descriptiveName: 
-    descriptiveNegativeName: 
+    descriptiveName: P1 Right
+    descriptiveNegativeName: P1 Left
     negativeButton: a
     positiveButton: d
     altNegativeButton: 
@@ -20,11 +20,43 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: HorizontalPlayerOne
+    descriptiveName: P1 Right (Controller)
+    descriptiveNegativeName: P1 Left (Controller)
+    negativeButton: a
+    positiveButton: d
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: HorizontalPlayerOne
+    descriptiveName: P1 Right (Controller)
+    descriptiveNegativeName: P1 Left (Controller)
+    negativeButton: a
+    positiveButton: d
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 5
+    joyNum: 1
   - serializedVersion: 3
     m_Name: HorizontalPlayerTwo
-    descriptiveName: 
-    descriptiveNegativeName: 
+    descriptiveName: P2 Right
+    descriptiveNegativeName: P2 Left
     negativeButton: j
     positiveButton: l
     altNegativeButton: 
@@ -38,9 +70,41 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+    m_Name: HorizontalPlayerTwo
+    descriptiveName: P2 Right (Controller)
+    descriptiveNegativeName: P2 Left (Controller)
+    negativeButton: j
+    positiveButton: l
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: HorizontalPlayerTwo
+    descriptiveName: P2 Right (Controller)
+    descriptiveNegativeName: P2 Left (Controller)
+    negativeButton: j
+    positiveButton: l
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 5
+    joyNum: 2
+  - serializedVersion: 3
     m_Name: VerticalPlayerOne
-    descriptiveName: 
-    descriptiveNegativeName: 
+    descriptiveName: P1 Up
+    descriptiveNegativeName: P1 Down
     negativeButton: s
     positiveButton: w
     altNegativeButton: 
@@ -54,9 +118,41 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+    m_Name: VerticalPlayerOne
+    descriptiveName: P1 Up (Controller)
+    descriptiveNegativeName: P1 Down (Controller)
+    negativeButton: s
+    positiveButton: w
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: VerticalPlayerOne
+    descriptiveName: P1 Up (Controller)
+    descriptiveNegativeName: P1 Down (Controller)
+    negativeButton: s
+    positiveButton: w
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 6
+    joyNum: 1
+  - serializedVersion: 3
     m_Name: VerticalPlayerTwo
-    descriptiveName: 
-    descriptiveNegativeName: 
+    descriptiveName: P2 Up
+    descriptiveNegativeName: P2 Down
     negativeButton: k
     positiveButton: i
     altNegativeButton: 
@@ -69,6 +165,38 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 0
+  - serializedVersion: 3
+    m_Name: VerticalPlayerTwo
+    descriptiveName: P2 Up
+    descriptiveNegativeName: P2 Down
+    negativeButton: k
+    positiveButton: i
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: VerticalPlayerTwo
+    descriptiveName: P2 Up
+    descriptiveNegativeName: P2 Down
+    negativeButton: k
+    positiveButton: i
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 6
+    joyNum: 2
   - serializedVersion: 3
     m_Name: Fire1
     descriptiveName: 

@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 3624b7714704f3b40a24e3bbb9f04cee
+guid: c60b9ba91633586469d3418601f1d1d7
 TextureImporter:
   fileIDToRecycleName:
-    21300000: red_shockwave_character_animation_0
-    21300002: red_shockwave_character_animation_1
-    21300004: red_shockwave_character_animation_2
-    21300006: red_shockwave_character_animation_3
-    21300008: red_shockwave_character_animation_4
-    21300010: red_shockwave_character_animation_5
+    21300000: shockwave_sprite_sheet_0
+    21300002: shockwave_sprite_sheet_1
+    21300004: shockwave_sprite_sheet_2
+    21300006: shockwave_sprite_sheet_3
+    21300008: shockwave_sprite_sheet_4
+    21300010: shockwave_sprite_sheet_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -53,7 +53,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -77,7 +77,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -90,7 +101,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: red_shockwave_character_animation_0
+      name: shockwave_sprite_sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -104,13 +115,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19b4f8da4d90313458a3706d66a2e59a
+      spriteID: 9ffc40dabbad863448e313654831a598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red_shockwave_character_animation_1
+      name: shockwave_sprite_sheet_1
       rect:
         serializedVersion: 2
         x: 0
@@ -124,13 +135,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fabb88399fee8f24ea43b4bf605ca4b4
+      spriteID: f72046d9ebcfcb049a3889f716316ee2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red_shockwave_character_animation_2
+      name: shockwave_sprite_sheet_2
       rect:
         serializedVersion: 2
         x: 0
@@ -144,13 +155,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a57edaacdc960974ca7b07005a6c7016
+      spriteID: a1b6dee6831f1d447a839eb8d2dbcb19
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red_shockwave_character_animation_3
+      name: shockwave_sprite_sheet_3
       rect:
         serializedVersion: 2
         x: 0
@@ -164,13 +175,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a04a7ac6f618517428fb95c0bd9accf8
+      spriteID: 61b93f1e2ebbae148bc7b38c7bb07b8c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red_shockwave_character_animation_4
+      name: shockwave_sprite_sheet_4
       rect:
         serializedVersion: 2
         x: 0
@@ -184,13 +195,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 037af5f17cf0c7a4a9d7e6e822fbc46b
+      spriteID: d8d7e48ca2b685d40a2291dae854edd0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red_shockwave_character_animation_5
+      name: shockwave_sprite_sheet_5
       rect:
         serializedVersion: 2
         x: 0
@@ -204,7 +215,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a8a3ce31f5a7244baf1b787840d4ff1
+      spriteID: bd118587db4d71648a7a4f2135ed642d
       vertices: []
       indices: 
       edges: []
@@ -212,7 +223,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2b0e67dc5ebf05f40bfe7add64c6b6f0
+    spriteID: 4c076821b4910fb499514c01752a415f
     vertices: []
     indices: 
     edges: []
