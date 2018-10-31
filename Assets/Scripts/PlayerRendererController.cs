@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerRendererController : MonoBehaviour
+public class PlayerRendererController : MonoBehaviourPun
 {
 	public float MaxSpinsPerSecond = 4;
 
@@ -27,9 +28,10 @@ public class PlayerRendererController : MonoBehaviour
 			transform
 		);
 	}
-
+	[PunRPC]
 	public void SetRendererPrefab(GameObject prefab)
 	{
+		Debug.Log("RPC");
 		RendererPrefab = prefab;
 		Destroy(_renderer);
 		_renderer = Instantiate(

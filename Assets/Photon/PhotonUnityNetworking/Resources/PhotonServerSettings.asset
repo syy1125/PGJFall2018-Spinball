@@ -31,4 +31,5 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - SetRendererPrefab
   DisableAutoOpenWizard: 1
