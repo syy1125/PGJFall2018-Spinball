@@ -22,7 +22,18 @@ public class NetworkSceneManager : MonoBehaviourPunCallbacks
 		{
 			Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManager.GetActiveScene().name);
 			// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-			PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 3f * PhotonNetwork.LocalPlayer.ActorNumber, 0f), Quaternion.identity, 0);
+			if(PhotonNetwork.IsMasterClient)
+			{
+				Debug.Log("Spawning player 1");
+				PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 10f, 0f), Quaternion.identity, 0);
+			}
+			else
+			{
+				Debug.Log("Spawning player 2");
+				GameObject temp = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, -10f, 0f), Quaternion.identity, 0);
+				GameObject newRender = temp.GetComponent<NetworkPlayerMovement>().QGB.P2RendererPrefab;
+				temp.GetComponent<PlayerRendererController>().photonView.RPC("SetRendererPrefab", RpcTarget.All, newRender);
+			}
 		}
 	}
 
@@ -34,11 +45,13 @@ public class NetworkSceneManager : MonoBehaviourPunCallbacks
 	public override void OnPlayerEnteredRoom(Player newPlayer)
 	{
 		Debug.Log("OnPlayerEnteredRoom()");
+		/*
 		if(PhotonNetwork.IsMasterClient)
 		{
 			Debug.Log("OnPlayerEnteredRoom() master client");
 			LoadArena();
 		}
+		*/
 	}
 
 	public void LeaveRoom()

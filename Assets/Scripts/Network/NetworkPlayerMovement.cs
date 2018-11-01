@@ -13,8 +13,10 @@ public class NetworkPlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 	public QuantumGyroBlade QGB;
 
 	private Rigidbody2D _rigidbody2D;
-	private Vector3 currentPosition;
-	private Quaternion currentRotation;
+	private Vector3 networkPosition;
+	private Quaternion networkRotation;
+	private Vector2 networkVelocity;
+	private float lastNetworkUpdate;
 
 	private void Start()
 	{
@@ -23,13 +25,27 @@ public class NetworkPlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
 	void Update()
 	{
-		this.transform.position = SmoothTransform();
-		this.transform.rotation = SmoothRotation();
+		if(!photonView.IsMine && PhotonNetwork.IsConnected)
+		{
+			this.transform.position = SmoothTransform();
+			this.transform.rotation = SmoothRotation();
+			_rigidbody2D.velocity = networkVelocity;
+		}
 	}
 
 	private Vector3 SmoothTransform()
 	{
-		
+		if(Vector3.Distance(networkPosition, this.transform.position) >= 2)
+		{
+			return networkPosition;
+		}
+		return Vector3.Lerp(transform.position, networkPosition, Time.deltaTime);
+	}
+
+	private Quaternion SmoothRotation()
+	{
+		return networkRotation;
+		//return Quaternion.RotateTowards(this.transform.rotation, networkRotation, Time.deltaTime * 100f);
 	}
 
 	void FixedUpdate()
@@ -58,17 +74,21 @@ public class NetworkPlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
 	{
+		//Debug.Log("PhotonSerialize at " + Time.time);
 		if (stream.IsWriting)
 		{
 			//We own this player: send the others our data
 			stream.SendNext(transform.position);
+			stream.SendNext(_rigidbody2D.velocity);
 			stream.SendNext(transform.rotation);
 		}
 		else
 		{
 			//Network player, receive data
-			currentPosition = (Vector3)stream.ReceiveNext();
-			currentRotation = (Quaternion)stream.ReceiveNext();
+			networkPosition = (Vector3)stream.ReceiveNext();
+			networkVelocity = (Vector2)stream.ReceiveNext();
+			networkRotation = (Quaternion)stream.ReceiveNext();
+			lastNetworkUpdate = Time.time;
 		}
 	}
 }
