@@ -5,8 +5,9 @@ using UnityEngine.Serialization;
 
 public class PlayerCollision : MonoBehaviour
 {
+	public GameObject sparkPrefab;
 
-	private float globalCollisionMultiplier = 0.9f;
+	private float globalCollisionMultiplier = 1.5f;
 
 	private Rigidbody2D _rigidbody2D;
 	private ParticleSystem _particleSystem;
@@ -14,7 +15,7 @@ public class PlayerCollision : MonoBehaviour
 	private void Start()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
-		_particleSystem = GetComponent<ParticleSystem>();
+		//_particleSystem = GetComponent<ParticleSystem>();
 	}
 
 	// private void OnCollisionEnter2D(Collision2D col)
@@ -70,7 +71,8 @@ public class PlayerCollision : MonoBehaviour
 		
 		if (rb != null && other.CompareTag("Player"))
 		{
-			_particleSystem.Play();
+			Instantiate(sparkPrefab, (other.transform.position + transform.position) / 2, Quaternion.identity);
+			//_particleSystem.Play();
 			Vector2 dir = gameObject.transform.position - other.transform.position;
 			rb.AddForce(-dir * 20);
 			_rigidbody2D.AddForce(dir * 20);
@@ -80,6 +82,7 @@ public class PlayerCollision : MonoBehaviour
 	private void DoCollision(Rigidbody2D instigator, Rigidbody2D receiver, float instPow, float instRes, float recPow, float recRes)
 	{
 		Vector2 dir = instigator.transform.position - receiver.transform.position;
+		dir.Normalize();
 		float recMag = Vector3.Project(instigator.velocity, dir).magnitude * (instPow / recRes);
 		float instMag = Vector3.Project(receiver.velocity, dir).magnitude * (recPow / instRes);
 		//Debug.Log("rec : " + recMag);
@@ -94,9 +97,11 @@ public class PlayerCollision : MonoBehaviour
 	{
 		AudioManager.instance.PlayClangSound();
 		Camera.main.GetComponent<CameraController>().ScreenShake(totalMagnitude);
-		_particleSystem.transform.position = (other.transform.position + gameObject.transform.position) / 2;
+		GameObject temp = Instantiate(sparkPrefab, (other.transform.position + transform.position) / 2, Quaternion.identity);
+		//temp.GetComponent<ParticleSystem.
+		//_particleSystem.transform.position = (other.transform.position + gameObject.transform.position) / 2;
 		// UnityEngine.ParticleSystem.ShapeModule editableShape = _particleSystem.shape;
 		// editableShape.position = (other.transform.position - gameObject.transform.position);
-		_particleSystem.Play();
+		//_particleSystem.Play();
 	}
 }
