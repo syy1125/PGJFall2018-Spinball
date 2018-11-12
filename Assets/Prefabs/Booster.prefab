@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4025653195860878}
   - component: {fileID: 212665529407056796}
-  - component: {fileID: 60471336390288278}
+  - component: {fileID: 61473858174755228}
   - component: {fileID: 114597773084130562}
   m_Layer: 0
   m_Name: Booster
@@ -42,8 +42,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60471336390288278
-PolygonCollider2D:
+--- !u!61 &61473858174755228
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -64,14 +64,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 3}
-      - {x: 2.8, y: -0.3}
-      - {x: 2, y: -3}
-      - {x: 0, y: 0}
-      - {x: -2, y: -3}
-      - {x: -2.8, y: -0.3}
+  serializedVersion: 2
+  m_Size: {x: 6, y: 6}
+  m_EdgeRadius: 0
 --- !u!114 &114597773084130562
 MonoBehaviour:
   m_ObjectHideFlags: 1
