@@ -15,17 +15,21 @@ public class Explosive : MonoBehaviour {
 
 	IEnumerator Start()
 	{
-		float timer = 0;
-		this.GetComponent<CircleCollider2D>().enabled = false;
-		while(timer < fadeInTime)
-		{
-			timer += Time.deltaTime;
-			float ratio = (timer / fadeInTime) * 5;
-			this.transform.localScale = new Vector3(ratio, ratio, ratio);
-			yield return null;
-		}
-		this.transform.localScale = new Vector3(5, 5, 5);
-		this.GetComponent<CircleCollider2D>().enabled = true;
+//		float timer = 0;
+//		this.GetComponent<CircleCollider2D>().enabled = false;
+//		while(timer < fadeInTime)
+//		{
+//			timer += Time.deltaTime;
+//			float ratio = (timer / fadeInTime) * 5;
+//			this.transform.localScale = new Vector3(ratio, ratio, ratio);
+//			yield return null;
+//		}
+//		this.transform.localScale = new Vector3(5, 5, 5);
+//		this.GetComponent<CircleCollider2D>().enabled = true;
+
+		GetComponent<CircleCollider2D>().enabled = false;
+		yield return new WaitForSeconds(fadeInTime);
+		GetComponent<CircleCollider2D>().enabled = true;
 	}
 
     	void Update()
