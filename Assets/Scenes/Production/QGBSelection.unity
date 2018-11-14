@@ -2803,56 +2803,7 @@ MonoBehaviour:
   FallbackRendererPrefab: {fileID: 1516162714561376, guid: 9af7f25d50e4c6842bfbe4fd566179f8,
     type: 2}
   RenderScale: 40
-  GyroBlades:
-  - Name: Default
-    P1RendererPrefab: {fileID: 1134215107169180, guid: c7c6423d921dcb24a8e670a53e813deb,
-      type: 2}
-    P2RendererPrefab: {fileID: 1920311373711724, guid: 7eaf3e0b92174cb479ae9ea6263d4b48,
-      type: 2}
-    Power: 2
-    Resistance: 2
-    Acceleration: 2
-  - Name: Arrows
-    P1RendererPrefab: {fileID: 1134215107169180, guid: b505edd723aa43a49b22715f77077066,
-      type: 2}
-    P2RendererPrefab: {fileID: 1920311373711724, guid: 660f9427662f23e4c85b97734efe3c1a,
-      type: 2}
-    Power: 2
-    Resistance: 1
-    Acceleration: 3
-  - Name: Shockwave
-    P1RendererPrefab: {fileID: 1516162714561376, guid: 035e06cfc2a893542a3258fd3cbb2b0b,
-      type: 2}
-    P2RendererPrefab: {fileID: 1484789797668910, guid: 43d7500074ab8234385758f86e89ed1a,
-      type: 2}
-    Power: 3
-    Resistance: 1
-    Acceleration: 2
-  - Name: Spinny Pig
-    P1RendererPrefab: {fileID: 1382542811452768, guid: 2838a232785ecfb438bd80daf402345a,
-      type: 2}
-    P2RendererPrefab: {fileID: 1933076249848358, guid: 3394b8b6b98164d41801dc968bca56e5,
-      type: 2}
-    Power: 1
-    Resistance: 2
-    Acceleration: 3
-  - Name: Dwayne
-    P1RendererPrefab: {fileID: 1588949077095058, guid: 00f908556c3f4294ca30ebd1910f424a,
-      type: 2}
-    P2RendererPrefab: {fileID: 1182944181593542, guid: 6711f9914b65f6d48913b75ea8829ecd,
-      type: 2}
-    Power: 2
-    Resistance: 3
-    Acceleration: 1
-  Chonnole:
-    Name: Chonnole
-    P1RendererPrefab: {fileID: 1516162714561376, guid: 61c6b429af70d4c43ba21eb3cf70f921,
-      type: 2}
-    P2RendererPrefab: {fileID: 1920311373711724, guid: 3bb5c00454a761f488ce227fc789d2bd,
-      type: 2}
-    Power: 3
-    Resistance: 3
-    Acceleration: 3
+  QGBManifest: {fileID: 4900000, guid: d69ede4d7e398a84499efc0548a891e8, type: 3}
   PasswordInput: {fileID: 420747283}
   UnlockQGBText: {fileID: 834359488}
   UnlockNotifyResetTime: 4

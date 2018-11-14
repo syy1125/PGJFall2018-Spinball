@@ -7,8 +7,6 @@ public class GameStateManager : MonoBehaviour
 {
 	public static GameStateManager Instance;
 
-	public bool ChonnoleUnlocked = false;
-
 	private void Awake()
 	{
 		if (Instance != null)
@@ -50,11 +48,11 @@ public class GameStateManager : MonoBehaviour
 
 		GameObject p1 = GameObject.Find("PlayerOne");
 		QGBUpdate(p1.GetComponent<MovementController>(), p1QGB);
-		p1.GetComponent<PlayerRendererController>().SetRendererPrefab(p1QGB.P1RendererPrefab);
+		p1.GetComponent<PlayerRendererController>().SetRendererPrefab(p1QGB.LoadRenderer("P1"));
 		
 		GameObject p2 = GameObject.Find("PlayerTwo");
 		QGBUpdate(p2.GetComponent<MovementController>(), p2QGB);
-		p2.GetComponent<PlayerRendererController>().SetRendererPrefab(p2QGB.P2RendererPrefab);
+		p2.GetComponent<PlayerRendererController>().SetRendererPrefab(p2QGB.LoadRenderer("P2"));
 	}	
 
 	private void QGBUpdate(MovementController movementController, QuantumGyroBlade QGB)
@@ -64,8 +62,6 @@ public class GameStateManager : MonoBehaviour
 		movementController.QGB.Power = CurveTable.Power[(int)(QGB.Power - 1)];
 		movementController.QGB.Resistance = CurveTable.Resistance[(int)(QGB.Resistance - 1)];
 	}
-
-	
 
 	public void EndGame(Sprite winner)
 	{

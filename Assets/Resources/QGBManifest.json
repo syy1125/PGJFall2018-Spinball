@@ -1,0 +1,42 @@
+{
+  "QGBs": [
+    {
+      "Name": "Default",
+      "Power": 2,
+      "Resistance": 2,
+      "Acceleration": 2
+    },
+    {
+      "Name": "Arrows",
+      "Power": 2,
+      "Resistance": 1,
+      "Acceleration": 3
+    },
+    {
+      "Name": "Shockwave",
+      "Power": 3,
+      "Resistance": 1,
+      "Acceleration": 2
+    },
+    {
+      "Name": "Spinny Pig",
+      "RendererAlias": "Hamster",
+      "Power": 1,
+      "Resistance": 2,
+      "Acceleration": 3
+    },
+    {
+      "Name": "Dwayne",
+      "Power": 2,
+      "Resistance": 3,
+      "Acceleration": 1
+    },
+    {
+      "Name": "Chonnole",
+      "Power": 3,
+      "Resistance": 3,
+      "Acceleration": 3,
+      "Secret": "7639"
+    }
+  ]
+}

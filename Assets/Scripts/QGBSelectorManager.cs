@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,8 +26,9 @@ public class QGBSelectorManager : MonoBehaviour
 
 	public GameObject FallbackRendererPrefab;
 	public float RenderScale = 20;
-	public QuantumGyroBlade[] GyroBlades;
-	public QuantumGyroBlade Chonnole;
+	public TextAsset QGBManifest;
+	private QuantumGyroBlade[] _gyroBlades;
+	public bool ClearUnlockOnLaunch;
 
 	public InputField PasswordInput;
 	public Text UnlockQGBText;
@@ -96,10 +99,8 @@ public class QGBSelectorManager : MonoBehaviour
 		CountdownDisplay.SetActive(false);
 		_inCountdown = false;
 
-		if (GameStateManager.Instance.ChonnoleUnlocked)
-		{
-			UnlockQGB(Chonnole);
-		}
+		_gyroBlades = JsonUtility.FromJson<QGBManifest>(QGBManifest.text).QGBs;
+		if (ClearUnlockOnLaunch) PlayerPrefs.DeleteKey("Unlocks");
 
 		UpdateUI();
 	}
@@ -131,16 +132,26 @@ public class QGBSelectorManager : MonoBehaviour
 
 			if (Input.GetAxisRaw(horizontalAxisName) < 0 && Time.time - state.LastLeft > Interval)
 			{
-				state.Index--;
+				do
+				{
+					state.Index--;
+					if (state.Index < 0) state.Index += _gyroBlades.Length;
+				}
+				while (!IsUnlocked(_gyroBlades[state.Index]));
+
 				state.LastLeft = Time.time;
-				while (state.Index < 0) state.Index += GyroBlades.Length;
 				UpdateUI();
 			}
 			else if (Input.GetAxisRaw(horizontalAxisName) > 0 && Time.time - state.LastRight > Interval)
 			{
-				state.Index++;
+				do
+				{
+					state.Index++;
+					if (state.Index >= _gyroBlades.Length) state.Index -= _gyroBlades.Length;
+				}
+				while (!IsUnlocked(_gyroBlades[state.Index]));
+
 				state.LastRight = Time.time;
-				while (state.Index >= GyroBlades.Length) state.Index -= GyroBlades.Length;
 				UpdateUI();
 			}
 			else if (Math.Abs(Input.GetAxisRaw(horizontalAxisName)) < 0.01)
@@ -176,8 +187,8 @@ public class QGBSelectorManager : MonoBehaviour
 
 	private void UpdateUI()
 	{
-		QuantumGyroBlade p1QGB = GyroBlades[_p1State.Index];
-		SetPreview(P1Preview.transform, p1QGB.P1RendererPrefab);
+		QuantumGyroBlade p1QGB = _gyroBlades[_p1State.Index];
+		SetPreview(P1Preview.transform, p1QGB.LoadRenderer("P1"));
 		P1Name.text = p1QGB.Name;
 		P1PowerDisplay.text = p1QGB.Power.ToString(CultureInfo.CurrentCulture);
 		P1ResistanceDisplay.text = p1QGB.Resistance.ToString(CultureInfo.CurrentCulture);
@@ -185,8 +196,8 @@ public class QGBSelectorManager : MonoBehaviour
 		P1ReadyArrow.SetActive(!_p1State.Ready);
 		P1UnreadyArrow.SetActive(_p1State.Ready);
 
-		QuantumGyroBlade p2QGB = GyroBlades[_p2State.Index];
-		SetPreview(P2Preview.transform, p2QGB.P2RendererPrefab);
+		QuantumGyroBlade p2QGB = _gyroBlades[_p2State.Index];
+		SetPreview(P2Preview.transform, p2QGB.LoadRenderer("P2"));
 		P2Name.text = p2QGB.Name;
 		P2PowerDisplay.text = p2QGB.Power.ToString(CultureInfo.CurrentCulture);
 		P2ResistanceDisplay.text = p2QGB.Resistance.ToString(CultureInfo.CurrentCulture);
@@ -233,12 +244,13 @@ public class QGBSelectorManager : MonoBehaviour
 				yield break;
 			}
 
-			CountdownDisplay.GetComponentInChildren<Text>().text = _countdownBaseText + Mathf.CeilToInt(startTime + CountdownLength - Time.time);
+			CountdownDisplay.GetComponentInChildren<Text>().text =
+				_countdownBaseText + Mathf.CeilToInt(startTime + CountdownLength - Time.time);
 
 			yield return new WaitForEndOfFrame();
 		}
-		
-		GameStateManager.Instance.GoToCombat(GyroBlades[_p1State.Index], GyroBlades[_p2State.Index]);
+
+		GameStateManager.Instance.GoToCombat(_gyroBlades[_p1State.Index], _gyroBlades[_p2State.Index]);
 	}
 
 	private void Update()
@@ -257,30 +269,40 @@ public class QGBSelectorManager : MonoBehaviour
 
 	public void OnPasswordInput(string pass)
 	{
-		if (pass.Equals("7639"))
+		foreach (QuantumGyroBlade qgb in _gyroBlades)
 		{
-			GameStateManager.Instance.ChonnoleUnlocked = true;
-			UnlockQGB(Chonnole);
+			if (qgb.Secret != null && qgb.Secret.Equals(pass))
+			{
+				UnlockQGB(qgb);
+				return;
+			}
 		}
-		if(pass.Equals("omega"))
+
+		if (pass.Equals("omega"))
 		{
-			GameStateManager.Instance.GoToOmega(GyroBlades[0], GyroBlades[0]);
+			GameStateManager.Instance.GoToOmega(_gyroBlades[0], _gyroBlades[0]);
 		}
 
 		PasswordInput.text = "";
 	}
 
+	private static bool IsUnlocked(QuantumGyroBlade qgb)
+	{
+		if (qgb.Secret == null) return true;
+
+		string[] unlocks = PlayerPrefs.GetString("Unlocks", "").Split(':');
+		return Array.BinarySearch(unlocks, qgb.Name) >= 0;
+	}
+
 	private void UnlockQGB(QuantumGyroBlade toUnlock)
 	{
-		QuantumGyroBlade[] newGyroBlades = new QuantumGyroBlade[GyroBlades.Length + 1];
+		string[] unlocks = PlayerPrefs.GetString("Unlocks", "").Split(':');
 
-		for (int i = 0; i < GyroBlades.Length; i++)
-		{
-			newGyroBlades[i] = GyroBlades[i];
-		}
+		Array.Resize(ref unlocks, unlocks.Length + 1);
+		unlocks[unlocks.Length - 1] = toUnlock.Name;
 
-		newGyroBlades[GyroBlades.Length] = toUnlock;
-		GyroBlades = newGyroBlades;
+		Array.Sort(unlocks);
+		PlayerPrefs.SetString("Unlocks", string.Join(":", unlocks));
 
 		if (_unlockNotification != null)
 		{
