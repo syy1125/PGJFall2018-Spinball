@@ -75,7 +75,7 @@ public class QGBSelection : MonoBehaviour
 			CountdownDisplay.GetComponentInChildren<Text>().text =
 				_countdownBaseText + Mathf.CeilToInt(startTime + CountdownLength - Time.time);
 
-			yield return new WaitForEndOfFrame();
+			yield return null;
 		}
 
 		GameStateManager.Instance.GoToCombat(GyroBlades[P1Selection.Index], GyroBlades[P2Selection.Index]);

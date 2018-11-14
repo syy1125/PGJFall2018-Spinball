@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Globalization;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayerSelection : MonoBehaviour
