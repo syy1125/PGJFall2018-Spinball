@@ -633,6 +633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 289535181}
   - component: {fileID: 289535183}
+  - component: {fileID: 289535182}
   m_Layer: 0
   m_Name: Player Two Panel
   m_TagString: Untagged
@@ -665,6 +666,27 @@ RectTransform:
   m_AnchoredPosition: {x: 210, y: -35}
   m_SizeDelta: {x: 340, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &289535182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 289535180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07aeafe8815794a4a8abde01e175c3ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HorizontalAxisName: HorizontalPlayerTwo
+  VerticalAxisName: VerticalPlayerTwo
+  PlayerPrefix: P2
+  Preview: {fileID: 1023283386}
+  Name: {fileID: 767797097}
+  Power: {fileID: 335423200}
+  Resistance: {fileID: 1528095904}
+  Acceleration: {fileID: 523654295}
+  ReadyArrow: {fileID: 1589539698}
+  UnreadyArrow: {fileID: 1560768931}
 --- !u!222 &289535183
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1838,7 +1860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e281b6ef1bb106945b2a9c3c6bb435b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChonnoleUnlocked: 0
 --- !u!4 &985899123
 Transform:
   m_ObjectHideFlags: 0
@@ -2782,6 +2803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1562621953}
   - component: {fileID: 1562621952}
+  - component: {fileID: 1562621954}
   m_Layer: 0
   m_Name: QGB Selection Manager
   m_TagString: Untagged
@@ -2800,36 +2822,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac809840f33aec4cbd67e3538c28f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FallbackRendererPrefab: {fileID: 1516162714561376, guid: 9af7f25d50e4c6842bfbe4fd566179f8,
-    type: 2}
-  RenderScale: 40
   QGBManifest: {fileID: 4900000, guid: d69ede4d7e398a84499efc0548a891e8, type: 3}
-  PasswordInput: {fileID: 420747283}
+  ClearUnlockOnLaunch: 0
+  Password: {fileID: 420747283}
   UnlockQGBText: {fileID: 834359488}
   UnlockNotifyResetTime: 4
-  P1HorizontalAxisName: HorizontalPlayerOne
-  P1VerticalAxisName: VerticalPlayerOne
-  P2HorizontalAxisName: HorizontalPlayerTwo
-  P2VerticalAxisName: VerticalPlayerTwo
-  Interval: 0.5
-  MaxReadySpeed: 2
-  ReadyBuildupTime: 1
   CountdownLength: 5
   CountdownDisplay: {fileID: 1950721629}
-  P1Preview: {fileID: 1949229185}
-  P1Name: {fileID: 838479711}
-  P1PowerDisplay: {fileID: 1371573006}
-  P1ResistanceDisplay: {fileID: 1121367386}
-  P1AccelerationDisplay: {fileID: 600976195}
-  P1ReadyArrow: {fileID: 1966790146}
-  P1UnreadyArrow: {fileID: 1236752799}
-  P2Preview: {fileID: 1023283386}
-  P2Name: {fileID: 767797097}
-  P2PowerDisplay: {fileID: 335423200}
-  P2ResistanceDisplay: {fileID: 1528095904}
-  P2AccelerationDisplay: {fileID: 523654295}
-  P2ReadyArrow: {fileID: 1589539698}
-  P2UnreadyArrow: {fileID: 1560768931}
+  P1Selection: {fileID: 1822333129}
+  P2Selection: {fileID: 289535182}
 --- !u!224 &1562621953
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2848,6 +2849,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1562621954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1562621951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c51d74563a78e4a93ea04643e99ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FallbackPrefab: {fileID: 1516162714561376, guid: 9af7f25d50e4c6842bfbe4fd566179f8,
+    type: 2}
+  RenderScale: 40
+  IntervalCurve:
+  - 0.5
+  - 0.3
+  - 0.2
+  MaxSpeed: 2
+  BuildupTime: 1
 --- !u!1 &1589539698
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,6 +2947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1822333128}
   - component: {fileID: 1822333130}
+  - component: {fileID: 1822333129}
   m_Layer: 0
   m_Name: Player One Panel
   m_TagString: Untagged
@@ -2958,6 +2980,27 @@ RectTransform:
   m_AnchoredPosition: {x: -170, y: -35}
   m_SizeDelta: {x: 340, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1822333129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1822333127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07aeafe8815794a4a8abde01e175c3ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HorizontalAxisName: HorizontalPlayerOne
+  VerticalAxisName: VerticalPlayerOne
+  PlayerPrefix: P1
+  Preview: {fileID: 1949229185}
+  Name: {fileID: 838479711}
+  Power: {fileID: 1371573006}
+  Resistance: {fileID: 1121367386}
+  Acceleration: {fileID: 600976195}
+  ReadyArrow: {fileID: 1966790146}
+  UnreadyArrow: {fileID: 1236752799}
 --- !u!222 &1822333130
 CanvasRenderer:
   m_ObjectHideFlags: 0
