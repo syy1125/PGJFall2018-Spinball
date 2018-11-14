@@ -543,8 +543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2760e268e7c644ba8d67958bf907e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerOne: {fileID: 1249270598}
-  playerTwo: {fileID: 1012069599}
+  players:
+  - {fileID: 1249270598}
+  - {fileID: 1012069599}
   cameraDamping: 0.4
   offset: {x: 0, y: 0, z: -10}
   minimumOrthographicSize: 10
