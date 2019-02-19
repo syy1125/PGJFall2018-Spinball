@@ -15,30 +15,6 @@ public class PlayerCollision : MonoBehaviour
 		//_particleSystem = GetComponent<ParticleSystem>();
 	}
 
-	// private void OnCollisionEnter2D(Collision2D col)
-	// {
-	// 	GameObject other = col.gameObject;
-	// 	Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-
-	// 	if (rb != null && other.CompareTag("Player"))
-	// 	{
-	// 		QuantumGyroBlade selfQGB = GetComponent<MovementController>().QGB;
-	// 		QuantumGyroBlade opponentQGB = other.GetComponent<MovementController>().QGB;
-	// 		Feedback(other, col.contacts[0].point, _rigidbody2D.velocity.magnitude + rb.velocity.magnitude);
-	// 		float mag = _rigidbody2D.velocity.magnitude;
-	// 		_rigidbody2D.velocity = (transform.position - other.transform.position)
-	// 		                        * rb.velocity.magnitude
-	// 		                        * CollisionDamping
-	// 		                        * opponentQGB.Power
-	// 		                        / selfQGB.Resistance;
-	// 		rb.velocity = (other.transform.position - transform.position)
-	// 		              * mag
-	// 		              * CollisionDamping
-	// 		              * selfQGB.Power
-	// 		              / opponentQGB.Resistance;
-	// 	}
-	// }
-
 	private void OnTriggerEnter2D(Collider2D col)
 	{
 		GameObject other = col.gameObject;
