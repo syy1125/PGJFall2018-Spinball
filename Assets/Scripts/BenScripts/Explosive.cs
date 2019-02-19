@@ -52,25 +52,7 @@ public class Explosive : MonoBehaviour
 			rb.AddForce(rb.position - new Vector2(transform.position.x, transform.position.y) * bounceForce);
 		}
 	}
-
-
-	// void OnCollisionEnter2D(Collision2D collision)
-	// {
-	//     if (collision.gameObject.CompareTag("Player"))
-	//     {
-	//         --health;
-
-	//         if (health == 0)
-	//         {
-	//             Explosion();
-	//             Destroy(gameObject);
-	//         }
-	//         else
-	//         {
-	//             Bounce(collision);
-	//         }
-	//     }
-	// }
+	
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player"))
