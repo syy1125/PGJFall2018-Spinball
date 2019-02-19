@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerRendererController : MonoBehaviour
 {
@@ -36,7 +34,7 @@ public class PlayerRendererController : MonoBehaviour
 			prefab,
 			transform
 		);
-		if(this.gameObject.name.Equals("PlayerOne"))
+		if (gameObject.name.Equals("PlayerOne"))
 		{
 			DeathManager.p1Sprite = _renderer.GetComponent<SpriteRenderer>().sprite;
 		}

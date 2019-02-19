@@ -27,10 +27,11 @@ public class DeathManager : MonoBehaviour
 
 	private void Update()
 	{
-		if((gameObject.transform.position - respawnCenter).magnitude >= killDistance)
+		if ((gameObject.transform.position - respawnCenter).magnitude >= killDistance)
 		{
 			Kill();
 		}
+
 //		if (Input.GetKeyDown(KeyCode.Space))
 //		{
 //			Kill();
@@ -40,7 +41,7 @@ public class DeathManager : MonoBehaviour
 	private void UpdateDeathDisplay()
 	{
 		//DeathDisplay.text = _deaths.ToString();
-		for(int x = 0; x < _deaths && x < pips.Length; ++x)
+		for (int x = 0; x < _deaths && x < pips.Length; ++x)
 		{
 			pips[x].GetComponent<Image>().sprite = fullPips;
 		}
@@ -53,9 +54,9 @@ public class DeathManager : MonoBehaviour
 		gameObject.SetActive(false);
 		_deaths++;
 		UpdateDeathDisplay();
-		if(_deaths == pips.Length)
+		if (_deaths == pips.Length)
 		{
-			if(this.gameObject.name.Equals("PlayerOne"))
+			if (gameObject.name.Equals("PlayerOne"))
 			{
 				GameStateManager.Instance.EndGame(p2Sprite);
 			}

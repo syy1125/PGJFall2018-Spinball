@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Serialization;
 
 public class MovementController : MonoBehaviour
@@ -18,15 +17,15 @@ public class MovementController : MonoBehaviour
 		_rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
-	void FixedUpdate()
+	private void FixedUpdate()
 	{
 		float horiz = Input.GetAxisRaw(HorizontalAxisName);
 		float vert = Input.GetAxisRaw(VerticalAxisName);
-		
+
 		// We multiply by Resistance here to counteract the effect of mass multiplier
-		Vector2 movementForce =new Vector2(horiz, vert).normalized 
-		                       * BaseInputStrength 
-		                       * QGB.Acceleration;
+		Vector2 movementForce = new Vector2(horiz, vert).normalized
+		                        * BaseInputStrength
+		                        * QGB.Acceleration;
 		float degrees = Vector2.Angle(_rigidbody2D.velocity, movementForce);
 		if (150 > degrees)
 		{

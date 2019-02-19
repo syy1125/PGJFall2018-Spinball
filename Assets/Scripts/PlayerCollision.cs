@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -22,7 +19,7 @@ public class PlayerCollision : MonoBehaviour
 	// {
 	// 	GameObject other = col.gameObject;
 	// 	Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-		
+
 	// 	if (rb != null && other.CompareTag("Player"))
 	// 	{
 	// 		QuantumGyroBlade selfQGB = GetComponent<MovementController>().QGB;
@@ -46,7 +43,7 @@ public class PlayerCollision : MonoBehaviour
 	{
 		GameObject other = col.gameObject;
 		Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-		
+
 		if (rb != null && other.CompareTag("Player"))
 		{
 			QuantumGyroBlade selfQGB = GetComponent<MovementController>().QGB;
@@ -54,21 +51,26 @@ public class PlayerCollision : MonoBehaviour
 			Feedback(other, _rigidbody2D.velocity.magnitude + rb.velocity.magnitude);
 			float a1 = Vector2.Angle(rb.velocity, transform.position - other.transform.position);
 			float a2 = Vector2.Angle(_rigidbody2D.velocity, transform.position - other.transform.position);
-			if(a1 > a2)
+			if (a1 > a2)
 			{
-				DoCollision(_rigidbody2D, rb, selfQGB.Power, selfQGB.Resistance, opponentQGB.Power, opponentQGB.Resistance);
+				DoCollision(
+					_rigidbody2D, rb, selfQGB.Power, selfQGB.Resistance, opponentQGB.Power, opponentQGB.Resistance
+				);
 			}
 			else
 			{
-				DoCollision(rb, _rigidbody2D, opponentQGB.Power, opponentQGB.Resistance, selfQGB.Power, selfQGB.Resistance);
+				DoCollision(
+					rb, _rigidbody2D, opponentQGB.Power, opponentQGB.Resistance, selfQGB.Power, selfQGB.Resistance
+				);
 			}
 		}
 	}
-	void OnTriggerStay2D(Collider2D col)
+
+	private void OnTriggerStay2D(Collider2D col)
 	{
 		GameObject other = col.gameObject;
 		Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-		
+
 		if (rb != null && other.CompareTag("Player"))
 		{
 			Instantiate(sparkPrefab, (other.transform.position + transform.position) / 2, Quaternion.identity);
@@ -79,7 +81,8 @@ public class PlayerCollision : MonoBehaviour
 		}
 	}
 
-	private void DoCollision(Rigidbody2D instigator, Rigidbody2D receiver, float instPow, float instRes, float recPow, float recRes)
+	private void DoCollision(Rigidbody2D instigator, Rigidbody2D receiver, float instPow, float instRes, float recPow,
+		float recRes)
 	{
 		Vector2 dir = instigator.transform.position - receiver.transform.position;
 		dir.Normalize();
@@ -93,11 +96,13 @@ public class PlayerCollision : MonoBehaviour
 		receiver.velocity = (-dir * globalCollisionMultiplier * recMag);
 	}
 
-	void Feedback(GameObject other, float totalMagnitude)
+	private void Feedback(GameObject other, float totalMagnitude)
 	{
 		AudioManager.instance.PlayClangSound();
 		Camera.main.GetComponent<CameraController>().ScreenShake(totalMagnitude);
-		GameObject temp = Instantiate(sparkPrefab, (other.transform.position + transform.position) / 2, Quaternion.identity);
+		GameObject temp = Instantiate(
+			sparkPrefab, (other.transform.position + transform.position) / 2, Quaternion.identity
+		);
 		//temp.GetComponent<ParticleSystem.
 		//_particleSystem.transform.position = (other.transform.position + gameObject.transform.position) / 2;
 		// UnityEngine.ParticleSystem.ShapeModule editableShape = _particleSystem.shape;

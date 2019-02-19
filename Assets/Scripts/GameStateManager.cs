@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -49,18 +49,18 @@ public class GameStateManager : MonoBehaviour
 		GameObject p1 = GameObject.Find("PlayerOne");
 		QGBUpdate(p1.GetComponent<MovementController>(), p1QGB);
 		p1.GetComponent<PlayerRendererController>().SetRendererPrefab(p1QGB.LoadRenderer("P1"));
-		
+
 		GameObject p2 = GameObject.Find("PlayerTwo");
 		QGBUpdate(p2.GetComponent<MovementController>(), p2QGB);
 		p2.GetComponent<PlayerRendererController>().SetRendererPrefab(p2QGB.LoadRenderer("P2"));
-	}	
+	}
 
 	private void QGBUpdate(MovementController movementController, QuantumGyroBlade QGB)
 	{
 		Debug.Log("ind " + QGB.Acceleration + " " + QGB.Power + " " + QGB.Resistance);
-		movementController.QGB.Acceleration = CurveTable.Acceleration[(int)(QGB.Acceleration - 1)];
-		movementController.QGB.Power = CurveTable.Power[(int)(QGB.Power - 1)];
-		movementController.QGB.Resistance = CurveTable.Resistance[(int)(QGB.Resistance - 1)];
+		movementController.QGB.Acceleration = CurveTable.Acceleration[(int) (QGB.Acceleration - 1)];
+		movementController.QGB.Power = CurveTable.Power[(int) (QGB.Power - 1)];
+		movementController.QGB.Resistance = CurveTable.Resistance[(int) (QGB.Resistance - 1)];
 	}
 
 	public void EndGame(Sprite winner)
@@ -73,12 +73,12 @@ public class GameStateManager : MonoBehaviour
 	{
 		Time.timeScale = 0.5f;
 		yield return new WaitForSeconds(1);
-	
+
 		AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync("EndScreen");
 
 		while (!loadSceneOperation.isDone) yield return null;
 		Time.timeScale = 1f;
-		
+
 		GameObject info = GameObject.Find("Winner");
 		info.GetComponent<Image>().sprite = winner;
 	}

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TextSpiralController : MonoBehaviour
@@ -24,7 +23,7 @@ public class TextSpiralController : MonoBehaviour
 	private void Start()
 	{
 		CheckForSkip();
-		
+
 		string content = ContentFile.text;
 
 		float scale = 1;

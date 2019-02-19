@@ -13,7 +13,7 @@ public class PlayerSelection : MonoBehaviour
 
 	public int Index { get; private set; }
 	public bool Ready { get; private set; }
-	public bool Complete { get; private set;  }
+	public bool Complete { get; private set; }
 
 	private QuantumGyroBlade _selectedQGB
 	{
@@ -53,7 +53,7 @@ public class PlayerSelection : MonoBehaviour
 	{
 		UpdatePreview();
 		UpdateStats();
-		
+
 		ReadyArrow.SetActive(true);
 		UnreadyArrow.SetActive(false);
 	}
@@ -141,12 +141,15 @@ public class PlayerSelection : MonoBehaviour
 		while (true)
 		{
 			yield return new WaitUntil(
-				() => !Ready && !_selection.Password.isFocused && Input.GetAxisRaw(HorizontalAxisName) * direction > 0);
+				() => !Ready && !_selection.Password.isFocused && Input.GetAxisRaw(HorizontalAxisName) * direction > 0
+			);
 
 			Coroutine move = StartCoroutine(MoveRepeat(direction));
 
-			yield return new WaitUntil(() =>
-				Ready || !_selection.Password.isFocused && Input.GetAxisRaw(HorizontalAxisName) * direction <= 0);
+			yield return new WaitUntil(
+				() =>
+					Ready || !_selection.Password.isFocused && Input.GetAxisRaw(HorizontalAxisName) * direction <= 0
+			);
 
 			StopCoroutine(move);
 		}

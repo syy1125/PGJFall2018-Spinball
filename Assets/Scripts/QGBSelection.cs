@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Globalization;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;

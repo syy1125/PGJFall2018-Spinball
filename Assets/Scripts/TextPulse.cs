@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +21,7 @@ public class TextPulse : MonoBehaviour
 			t.color = new Color(_baseColor.r, _baseColor.g, _baseColor.b, stage > 1 ? 2 - stage : stage);
 			yield return null;
 		}
-		
+
 		Destroy(gameObject);
 	}
 }

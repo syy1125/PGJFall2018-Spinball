@@ -15,7 +15,7 @@ public class InputVisualizer : MonoBehaviour
 		Vector2 input = (Raw
 			? new Vector2(Input.GetAxisRaw(Horizontal), Input.GetAxisRaw(Vertical))
 			: new Vector2(Input.GetAxis(Horizontal), Input.GetAxis(Vertical)));
-		
+
 		transform.localPosition = Scale * input;
 
 		CoordinateDisplay.text = input.ToString();

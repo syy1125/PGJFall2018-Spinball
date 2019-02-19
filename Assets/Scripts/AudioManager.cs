@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour 
+public class AudioManager : MonoBehaviour
 {
 	public static AudioManager instance;
 
@@ -13,12 +12,13 @@ public class AudioManager : MonoBehaviour
 
 	private AudioSource source;
 
-	void Start () 
+	private void Start()
 	{
-		if(instance != null)
+		if (instance != null)
 		{
 			Destroy(gameObject);
 		}
+
 		instance = this;
 		//DontDestroyOnLoad(gameObject);
 
@@ -45,10 +45,10 @@ public class AudioManager : MonoBehaviour
 	private IEnumerator PlayOneShotClang()
 	{
 		int numClangs = Random.Range(2, 4);
-		for(int x = 0; x < numClangs; ++x)
+		for (int x = 0; x < numClangs; ++x)
 		{
 			source.PlayOneShot(clangs[Random.Range(0, clangs.Length)]);
-			for(int y = 0; y < 5; ++y)
+			for (int y = 0; y < 5; ++y)
 			{
 				yield return null;
 			}
