@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerCollision : MonoBehaviour
 
 	private Rigidbody2D _rigidbody2D;
 	private ParticleSystem _particleSystem;
+	private Coroutine _slowMotionCoroutine;
 
 	private void Start()
 	{
@@ -50,7 +52,6 @@ public class PlayerCollision : MonoBehaviour
 		if (rb != null && other.CompareTag("Player"))
 		{
 			Instantiate(sparkPrefab, (other.transform.position + transform.position) / 2, Quaternion.identity);
-			//_particleSystem.Play();
 			Vector2 dir = gameObject.transform.position - other.transform.position;
 			rb.AddForce(-dir * 20);
 			_rigidbody2D.AddForce(dir * 20);
@@ -64,25 +65,31 @@ public class PlayerCollision : MonoBehaviour
 		dir.Normalize();
 		float recMag = Vector3.Project(instigator.velocity, dir).magnitude * (instPow / recRes);
 		float instMag = Vector3.Project(receiver.velocity, dir).magnitude * (recPow / instRes);
-		//Debug.Log("rec : " + recMag);
-		//Debug.Log("inst: " + instMag);
-		//instigator.velocity =  instigator.velocity + (dir * CollisionDamping * instMag);
-		//receiver.velocity = receiver.velocity + (-dir * CollisionDamping * recMag);
-		instigator.velocity = (dir * globalCollisionMultiplier * instMag);
-		receiver.velocity = (-dir * globalCollisionMultiplier * recMag);
+		instigator.velocity = dir * globalCollisionMultiplier * instMag;
+		receiver.velocity = -dir * globalCollisionMultiplier * recMag;
 	}
 
 	private void Feedback(GameObject other, float totalMagnitude)
 	{
 		AudioManager.instance.PlayClangSound();
 		Camera.main.GetComponent<CameraController>().ScreenShake(totalMagnitude);
-		GameObject temp = Instantiate(
+		Instantiate(
 			sparkPrefab, (other.transform.position + transform.position) / 2, Quaternion.identity
 		);
-		//temp.GetComponent<ParticleSystem.
-		//_particleSystem.transform.position = (other.transform.position + gameObject.transform.position) / 2;
-		// UnityEngine.ParticleSystem.ShapeModule editableShape = _particleSystem.shape;
-		// editableShape.position = (other.transform.position - gameObject.transform.position);
-		//_particleSystem.Play();
+
+		if (_slowMotionCoroutine != null)
+		{
+			StopCoroutine(_slowMotionCoroutine);
+		}
+
+		_slowMotionCoroutine = StartCoroutine(SlowMotion(totalMagnitude));
+	}
+
+	private IEnumerator SlowMotion(float magnitude)
+	{
+		Time.timeScale = Mathf.Clamp01(3 / magnitude);
+		yield return new WaitForSecondsRealtime(Mathf.Log10(magnitude + 1) / 5);
+		Time.timeScale = 1f;
+		_slowMotionCoroutine = null;
 	}
 }
